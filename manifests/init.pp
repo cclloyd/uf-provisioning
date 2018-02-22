@@ -35,7 +35,7 @@
 #
 # Copyright 2018 Your name here, unless otherwise noted.
 #
-class ufprovisioning::base {
+class ufprovisioning {
 	
 	include ufprovisioning::install
 	include ufprovisioning::config
