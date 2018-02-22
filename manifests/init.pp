@@ -35,11 +35,11 @@
 #
 # Copyright 2018 Your name here, unless otherwise noted.
 #
-class ufprovisioning {
+class ufprovisioning::base {
 	
-	include ntp::install
-	include ntp::config
-	include ntp::service
+	include ufprovisioning::install
+	include ufprovisioning::config
+	include ufprovisioning::service
 	
 
 }
