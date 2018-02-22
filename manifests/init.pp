@@ -37,6 +37,8 @@
 #
 class ufprovisioning {
 	
+	notice("Provisioning for nginx server...")
+	
 	include ufprovisioning::install
 	include ufprovisioning::config
 	include ufprovisioning::service
