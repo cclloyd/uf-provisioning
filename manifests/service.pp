@@ -1,5 +1,5 @@
 # == Class: ufprovisioning::service
-class ufprovisioning::service inherits ufprovisioning {
+class ufprovisioning::service inherits ufprovisioning::base {
 
   service { 'nginx':
     ensure     => running,

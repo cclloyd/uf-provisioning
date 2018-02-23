@@ -35,7 +35,7 @@
 #
 # Copyright 2018 Your name here, unless otherwise noted.
 #
-class ufprovisioning {
+class ufprovisioning::base {
 	
 	alert("Provisioning for nginx server...")
 	

@@ -1,5 +1,5 @@
 # == Class: ufprovisioning::config
-class ufprovisioning::config inherits ufprovisioning {
+class ufprovisioning::config inherits ufprovisioning::base {
 
 	#file { '/etc/ntp.conf':
 	#	ensure  => file,
