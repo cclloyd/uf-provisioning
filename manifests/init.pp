@@ -52,9 +52,9 @@ class provisioning {
 	
 	alert("Provisioning for test server...")
 	
-	#include ufprovisioning::install
-	#include ufprovisioning::config
-	#include ufprovisioning::service
+	include ufprovisioning::install
+	include ufprovisioning::config
+	include ufprovisioning::service
 	
 	package { 'tree':
 		ensure => installed,
