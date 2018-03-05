@@ -17,6 +17,14 @@ class ufprovisioning::config {
 		mode    => '0755',
 		require => Package['nginx']
 	}
+	file { "/etc/nginx/sites-available/testtemplate.conf":
+		ensure => "present",
+		source  => "puppet:///modules/ufprovisioning/templates/testtemplate.erb",
+		owner   => 'root',
+		group   => 'root',
+		mode    => '0755',
+		require => Package['nginx']
+	}
 
 	file { '/etc/nginx/sites-enabled/cclloyd.com.conf':
 		ensure => 'link',
