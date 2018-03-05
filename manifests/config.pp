@@ -20,7 +20,7 @@ class ufprovisioning::config {
 	
 	
 	
-	file { "/etc/nginx/sites-available/testtemplate.conf", {'site_name' => $site_name}:
+	file { "/etc/nginx/sites-available/testtemplate.conf", {'site_name' => "testsite" }:
 		ensure => "present",
 		#source  => "puppet:///modules/ufprovisioning/templates/testtemplate.erb",
 		content => template('ufprovisioning/testtemplate.erb'),
