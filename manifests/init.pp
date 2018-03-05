@@ -5,9 +5,6 @@ class ufprovisioning {
 	include ufprovisioning::config
 	include ufprovisioning::service
 	
-	package { 'tree':
-		ensure => installed,
-	}
 }
 
 class ufprovisioning::ufprovisioning {
@@ -17,7 +14,4 @@ class ufprovisioning::ufprovisioning {
 	include ufprovisioning::config
 	include ufprovisioning::service
 	
-	package { 'tree':
-		ensure => installed,
-	}
 }
