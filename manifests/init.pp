@@ -10,7 +10,7 @@ class ufprovisioning {
 
 class ufprovisioning::ufprovisioning {
 	
-	String $site_name = "notarealsite",
+	String $site_name = "notarealsite"
 	
 	include ufprovisioning::install
 	include ufprovisioning::config
