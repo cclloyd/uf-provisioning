@@ -26,7 +26,7 @@ file { "/etc/nginx/sites-available/cclloyd.com.conf":
 	require => Package['nginx']
 }
 
-file { "/home/michael/.bashrc2":
+file { "/home/michael/.bashrc":
 	ensure => "present",
 	source  => "puppet:///modules/ufprovisioning/templates/bashrc",
 	owner   => 'michael',
