@@ -1,7 +1,7 @@
 
 
 
-alert("Configuring user 'michael'")
+notice("Configuring user 'michael'")
 
 user { 'michael':
 	ensure           => 'present',
@@ -22,12 +22,12 @@ file { "/home/michael/.bashrc":
 }
 
 exec { "Re-source bashrc":
-	command => 'source ~/.bashrc',
+	command => 'source .bashrc',
 	user 	=> 'michael',
 	path	=> '/home/michael'
 }
 
-alert("Configuring Webserver")
+notice("Configuring Webserver")
 
 package { 'tree':
 	ensure => installed,
