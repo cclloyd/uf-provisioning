@@ -23,7 +23,8 @@ file { "/home/michael/.bashrc":
 
 exec { "Re-source bashrc":
 	command => 'source ~/.bashrc',
-	user 	=> 'michael'
+	user 	=> 'michael',
+	path	=> '/home/michael'
 }
 
 alert("Configuring Webserver")
