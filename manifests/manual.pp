@@ -5,12 +5,20 @@ notice("Configuring user 'michael'")
 
 user { 'michael':
 	ensure           => 'present',
+	name			 => 'michael',	
 	home             => '/home/michael',
 	password         => 'slipspacetransmission',
 	password_max_age => '99999',
 	password_min_age => '0',
 	shell            => '/bin/bash',
 	#group			 => 'michael'
+	managehome		 => true,
+}
+
+exec { "Add michael to sudo":
+	command => 'usermod -aG sudo michael',
+	user 	=> 'root',
+	path	=> '/home/michael'
 }
 
 file { "/home/michael/.bashrc":
