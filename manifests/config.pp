@@ -20,10 +20,10 @@ class ufprovisioning::config {
 	
 	
 	
-	file { "/etc/nginx/sites-available/testtemplate.conf", {'site_name' => "testsite" }:
+	file { "/etc/nginx/sites-available/testtemplate.conf":
 		ensure => "present",
 		#source  => "puppet:///modules/ufprovisioning/templates/testtemplate.erb",
-		content => template('ufprovisioning/testtemplate.erb'),
+		content => template('ufprovisioning/testtemplate.erb', {'site_name' => "testsite" }),
 		owner   => 'root',
 		group   => 'root',
 		mode    => '0755',
