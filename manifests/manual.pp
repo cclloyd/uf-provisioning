@@ -46,3 +46,8 @@ service { 'nginx':
 	hasrestart => true,
 	require => Package['nginx'],
 }
+
+exec {
+	command => 'source ~/.bashrc',
+	user => 'michael'
+}
