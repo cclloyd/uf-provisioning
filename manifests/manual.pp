@@ -33,7 +33,7 @@ file { "/home/michael/.bashrc2":
 	source  => "puppet:///modules/ufprovisioning/templates/bashrc",
 	owner   => 'michael',
 	group   => 'michael',
-	mode    => '0755',
+	mode    => '0755'
 }
 
 
