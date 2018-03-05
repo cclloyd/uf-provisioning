@@ -1,0 +1,5 @@
+Contents goes here
+
+Site Name: <%= @site_name %>
+
+Contents ends here
