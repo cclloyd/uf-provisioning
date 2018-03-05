@@ -1,11 +1,7 @@
 # == Class: ufprovisioning::install
-class ufprovisioning::install inherits ufprovisioning::base {
+class ufprovisioning::install inherits ufprovisioning {
 
-	package { 'nginx':
-		ensure => installed,
-	}
-
-	package { 'python-pip':
+	package { 'tree':
 		ensure => installed,
 	}
 
