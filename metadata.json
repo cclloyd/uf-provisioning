@@ -1,6 +1,6 @@
 {
   "name": "ufprovisioning",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "cclloyd",
   "summary": "Applies Userfrosting production provisioning to Ubuntu 16.04 LTS",
   "license": "Apache 2.0",
