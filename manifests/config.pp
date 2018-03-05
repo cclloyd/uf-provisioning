@@ -1,6 +1,10 @@
 # == Class: ufprovisioning::config
 class ufprovisioning::config {
 
+	$webserver_manage				= $::ufprovisioning::params::webserver_manage,
+	$site_name						= $::ufprovisioning::params::site_name,
+	
+	
 	#file { '/etc/ntp.conf':
 	#	ensure  => file,
 	#	owner   => 'root',
@@ -23,7 +27,7 @@ class ufprovisioning::config {
 	file { "/etc/nginx/sites-available/testtemplate.conf":
 		ensure => "present",
 		#source  => "puppet:///modules/ufprovisioning/templates/testtemplate.epp",
-		content => epp('ufprovisioning/testtemplate.epp', {'site_name' => "testsite" }),
+		content => template('ufprovisioning/testtemplate.erb'),
 		owner   => 'root',
 		group   => 'root',
 		mode    => '0755',
