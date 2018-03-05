@@ -23,7 +23,7 @@ class ufprovisioning::config {
 	file { "/etc/nginx/sites-available/testtemplate.conf":
 		ensure => "present",
 		#source  => "puppet:///modules/ufprovisioning/templates/testtemplate.epp",
-		content => template('ufprovisioning/testtemplate.erb', {'site_name' => "testsite" }),
+		content => epp('ufprovisioning/testtemplate.epp', {'site_name' => "testsite" }),
 		owner   => 'root',
 		group   => 'root',
 		mode    => '0755',
