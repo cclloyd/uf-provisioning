@@ -1,5 +1,5 @@
 # == Class: ufprovisioning::install
-class ufprovisioning::install inherits ufprovisioning {
+class ufprovisioning::install {
 
 	package { 'tree':
 		ensure => installed,

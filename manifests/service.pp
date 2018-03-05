@@ -1,12 +1,13 @@
 # == Class: ufprovisioning::service
-class ufprovisioning::service inherits ufprovisioning::base {
+class ufprovisioning::service {
 
-  service { 'nginx':
-    ensure     => running,
-    enable     => true,
-    hasstatus  => true,
-    hasrestart => true,
-    require => Package['nginx'],
-  }
+
+	#service { 'nginx':
+	#	ensure     => running,
+	#	enable     => true,
+	#	hasstatus  => true,
+	#	hasrestart => true,
+	#	require => Package['nginx'],
+	#}
 
 }
