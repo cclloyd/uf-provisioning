@@ -6,12 +6,7 @@ package { 'nginx':
 	ensure => installed,
 }	
 
-service { 'nginx':
-	ensure     => stopped,
-	require => Package['nginx'],
-}
-
- user { 'michael':
+user { 'michael':
 	ensure           => 'present',
 	gid              => '501',
 	home             => '/home/michael',
