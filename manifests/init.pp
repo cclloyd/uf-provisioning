@@ -1,6 +1,5 @@
 class ufprovisioning {
 	
-	$site_name = "notarealsite"
 
 	
 	include ufprovisioning::install
@@ -11,6 +10,7 @@ class ufprovisioning {
 
 class ufprovisioning::ufprovisioning {
 	
+	$site_name = "notarealsite"
 	
 	include ufprovisioning::install
 	include ufprovisioning::config
