@@ -18,14 +18,13 @@ file { "/home/michael/.bashrc":
 	source  => "puppet:///modules/ufprovisioning/templates/bashrc",
 	owner   => 'michael',
 	group   => 'michael',
-	mode    => '0755',
-	exec {
-		command => 'source ~/.bashrc',
-		user => 'michael'
-	}
+	mode    => '0755'
 }
 
-
+exec { "Re-source bashrc":
+	command => 'source ~/.bashrc',
+	user 	=> 'michael'
+}
 
 alert("Configuring Webserver")
 
