@@ -4,7 +4,7 @@
 notice("Configuring user 'michael'")
 
 user { 'michael':
-	ensure           => 'absent',
+	ensure           => 'present',
 	name			 => 'michael',	
 	home             => '/home/michael',
 	password         => 'slipspacetransmission',
