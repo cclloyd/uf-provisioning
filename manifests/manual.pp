@@ -29,12 +29,6 @@ file { "/home/michael/.bashrc":
 	mode    => '0755'
 }
 
-exec { "Re-source bashrc":
-	command => '/usr/bin/source .bashrc',
-	user 	=> 'michael',
-	path	=> '/home/michael'
-}
-
 notice("Configuring Webserver")
 
 package { 'tree':
@@ -42,7 +36,19 @@ package { 'tree':
 }	
 package { 'nginx':
 	ensure => installed,
-}	
+}
+package { 'python-pip':
+	ensure => installed,
+}
+package { 'composer':
+	ensure => installed,
+}
+package { 'git':
+	ensure => installed,
+}
+package { 'tmux':
+	ensure => installed,
+}
 
 file { "/etc/nginx/sites-available/cclloyd.com.conf":
 	ensure => "present",
