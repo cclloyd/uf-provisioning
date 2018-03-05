@@ -41,7 +41,7 @@ alias cclloydhalt="cd '/Users/Michael/Development/Web/Vagrant/cclloyd.com/homest
 alias cclloydgo="cd '/Users/Michael/Development/Web/Vagrant/cclloyd.com/'"
 alias cclloydwatch="cd /Users/Michael/Development/Web/Vagrant/cclloyd.com/cclloyd/assets/css; sass --watch ."
 
-if [ ! -f ~/.bash_profile ]; then
+if [-f ~/.bash_profile ]; then
 
 alias gifv='sh /usr/local/share/gifv.sh'
 alias dm="dark-mode"

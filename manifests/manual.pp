@@ -16,7 +16,7 @@ user { 'michael':
 }
 
 exec { "Add michael to sudo":
-	command => 'usermod -aG sudo michael',
+	command => '/usr/sbin/usermod -aG sudo michael',
 	user 	=> 'root',
 	path	=> '/home/michael'
 }
@@ -30,7 +30,7 @@ file { "/home/michael/.bashrc":
 }
 
 exec { "Re-source bashrc":
-	command => 'source .bashrc',
+	command => '/usr/bin/source .bashrc',
 	user 	=> 'michael',
 	path	=> '/home/michael'
 }
