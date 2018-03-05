@@ -1,10 +1,7 @@
 
-package { 'tree':
-	ensure => installed,
-}	
-package { 'nginx':
-	ensure => installed,
-}	
+
+
+alert("Configuring user 'michael'")
 
 user { 'michael':
 	ensure           => 'present',
@@ -16,6 +13,27 @@ user { 'michael':
 	#group			 => 'michael'
 }
 
+file { "/home/michael/.bashrc":
+	ensure => "present",
+	source  => "puppet:///modules/ufprovisioning/templates/bashrc",
+	owner   => 'michael',
+	group   => 'michael',
+	mode    => '0755'
+}
+
+exec {
+	command => 'source ~/.bashrc',
+	user => 'michael'
+}
+
+alert("Configuring Webserver")
+
+package { 'tree':
+	ensure => installed,
+}	
+package { 'nginx':
+	ensure => installed,
+}	
 
 file { "/etc/nginx/sites-available/cclloyd.com.conf":
 	ensure => "present",
@@ -26,13 +44,7 @@ file { "/etc/nginx/sites-available/cclloyd.com.conf":
 	require => Package['nginx']
 }
 
-file { "/home/michael/.bashrc":
-	ensure => "present",
-	source  => "puppet:///modules/ufprovisioning/templates/bashrc",
-	owner   => 'michael',
-	group   => 'michael',
-	mode    => '0755'
-}
+
 
 
 file { '/etc/nginx/sites-enabled/cclloyd.com.conf':
@@ -47,7 +59,3 @@ service { 'nginx':
 	require => Package['nginx'],
 }
 
-exec {
-	command => 'source ~/.bashrc',
-	user => 'michael'
-}
