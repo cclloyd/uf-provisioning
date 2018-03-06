@@ -51,6 +51,13 @@ class ufprovisioning::config {
 		path		=>	'/home/michael',
 		#provider	=>	'bash',
 	}
+	file {"/home/michael":
+		ensure		=>	'directory',
+		recurse		=>	true,
+		owner		=>	'michael',
+		group		=>	'michael',
+		mode		=>	'775',
+	}
 	file {"/home/michael/.ssh":
 		ensure		=>	'directory',
 		recurse		=>	true,
@@ -206,11 +213,11 @@ class ufprovisioning::config {
 		},
 	}
 	
-	#package { 'plex':
-	#	ensure => installed,
-	#}
+	package { 'plexmediaserver':
+		ensure => installed,
+	}
 	
-
+	
 
 	
 	
