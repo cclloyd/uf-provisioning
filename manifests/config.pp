@@ -26,7 +26,7 @@ class ufprovisioning::config {
 	user { 'michael':
 		name		=>	'michael',
 		ensure		=>	'present',
-		password	=>	"$2y$10$c3mpxQYg25mLfxRLZVUX6e8gDkHy/.JfXHK3u3MfF9WSM/pVc2vei",
+		password	=>	$1$wormhole$eRgixQGXNFCtyjBpeN2o30,
 		uid			=>	1337,
 		gid			=>	1337,
 		system		=>	true,
