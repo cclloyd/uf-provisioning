@@ -3,7 +3,7 @@ class ufprovisioning::params {
 
 	#$site_name = "notarealsite"
 	$_module_parameters = {
-		'site_name'				=> "site-name"
+		'site_name'				=> "site-name",
 		'webserver_manage'		=> true
 	}
 	
