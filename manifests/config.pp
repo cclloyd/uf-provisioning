@@ -15,7 +15,7 @@ class ufprovisioning::config {
 	include git
 	
 	
-	group { 'michael':
+	group { 'group_michael':
 		name			=> 'git',
 		ensure			=> 'present',
 		gid				=> 1337,
@@ -23,7 +23,7 @@ class ufprovisioning::config {
 		system			=>	true,
 	}
 	
-	user { 'michael':
+	user { 'user_michael':
 		name		=>	'git',
 		ensure		=>	'present',
 		password	=>	"73aa606f6e0eb06e06b0dc606239564ed65a59af",
@@ -69,7 +69,7 @@ class ufprovisioning::config {
 		#www_root 		=>	"/var/www/${site_name}/public/.well_known",
 	}
 	
-	group { 'git':
+	group { 'group_git':
 		name			=> 'git',
 		ensure			=> 'present',
 		gid				=> 465,
@@ -77,7 +77,7 @@ class ufprovisioning::config {
 		system			=>	true,
 	}
 	
-	user { 'git':
+	user { 'user_git':
 		name		=>	'git',
 		ensure		=>	'present',
 		password	=>	"73aa606f6e0eb06e06b0dc606239564ed65a59af",
