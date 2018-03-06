@@ -11,9 +11,9 @@ class ufprovisioning::config {
 		
 	}
 	
-	letsencrypt::certonly { $site_name: 
+	letsencrypt::certonly { "${site_name}_certs: 
 		domains 	=> [$site_name],
-		plugin 		=> 'apache',
+		server => 'https://acme-v01.api.letsencrypt.org/directory',
 	}
 	
 	
