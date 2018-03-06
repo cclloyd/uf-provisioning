@@ -70,25 +70,33 @@ class ufprovisioning::config {
 		recurse		=>	true,
 		owner		=>	'git',
 		group		=>	'git',
-		mode		=>	'755',
+		mode		=>	'775',
 	}
 	file {"/home/git/.ssh/authorized_keys":
 		ensure		=>	'present',
 		owner		=>	'git',
 		group		=>	'git',
-		mode		=>	'755',
+		mode		=>	'775',
 	}
 	
 	
 	$keys = '/home/git/.ssh/authorized_keys'
+	
 	concat { $keys:
 		owner => 'git',
 		group => 'git',
 		mode  => '0775'
 	}
+	
+	concat::fragment{ 'keys_header':
+		target  => $keys,
+		content => "# Authorized ssh keys",
+		order   => '01',
+	}
+	
 	concat::fragment{ 'mac_key':
 		target  => $keys,
-		content => "puppet:///modules/ufprovisioning/conf/cclloyd_rsa.pub",
+		source	=> "puppet:///modules/ufprovisioning/conf/cclloyd_rsa.pub",
 		order   => '01',
 	}
 	
