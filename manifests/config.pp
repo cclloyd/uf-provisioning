@@ -60,7 +60,6 @@ class ufprovisioning::config {
 	}
 	file {"/home/michael/.ssh":
 		ensure		=>	'directory',
-		recurse		=>	true,
 		owner		=>	'michael',
 		group		=>	'michael',
 		mode		=>	'775',
