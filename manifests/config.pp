@@ -17,7 +17,7 @@ class ufprovisioning::config {
 	#	content => template($module_name/ntp.conf.erb),
 	#}
 	
-	nginx::resource::server { 'cclloyd.com':
+	nginx::resource::server { $site_name:
 		ensure			=>	present,
 		server_name 	=>	[$site_name],
 		www_root 		=>	"/var/www/${site_name}",
