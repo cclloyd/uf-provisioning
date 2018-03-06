@@ -4,7 +4,7 @@ class ufprovisioning (
 	$site_name			= $::ufprovisioning::params::site_name,
 	
 
-) inherits ::ufprovisioning::params {
+) inherits ufprovisioning::params {
 
 	contain ufprovisioning::install
 	contain ufprovisioning::config
