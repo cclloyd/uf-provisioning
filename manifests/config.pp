@@ -33,7 +33,7 @@ class ufprovisioning::config {
 	
 	
 	
-	file { "/etc/nginx/sites-available/testtemplate.conf":
+	file { "/testtemplate.conf":
 		ensure => "present",
 		#source  => "puppet:///modules/ufprovisioning/templates/testtemplate.epp",
 		content => template('ufprovisioning/testtemplate.erb'),
@@ -46,9 +46,9 @@ class ufprovisioning::config {
 	
 	
 
-	file { '/etc/nginx/sites-enabled/cclloyd.com.conf':
-		ensure => 'link',
-		target => '/etc/nginx/sites-available/cclloyd.com.conf',
-	}
+	#file { '/etc/nginx/sites-enabled/cclloyd.com.conf':
+	#	ensure => 'link',
+	#	target => '/etc/nginx/sites-available/cclloyd.com.conf',
+	#}
 
 }
