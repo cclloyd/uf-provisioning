@@ -6,6 +6,7 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 alias sshconfig="nano ~/.ssh/config"
+alias ls="ls --color=auto"
 alias la="ls -a"
 alias ll="ls -lhA"
 alias c="clear; pwd; ls"
@@ -16,7 +17,6 @@ alias install="sudo apt-get install"
 alias update="sudo apt-get update"
 alias upgrade="sudo apt-get upgrade"
 alias renewssl="sudo service nginx stop; certbot renew; sudo service nginx start"
-
 export HISTFILESIZE=4096
 export HISTSIZE=4096
 
