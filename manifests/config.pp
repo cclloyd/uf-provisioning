@@ -36,7 +36,7 @@ class ufprovisioning::config {
 	file { "/testtemplate.conf":
 		ensure => "present",
 		#source  => "puppet:///modules/ufprovisioning/templates/testtemplate.epp",
-		content => epp('ufprovisioning/testtemplate.epp', { 'site_name' => 'unacceptable' }),
+		content => epp('ufprovisioning/testtemplate.epp', { 'site_name' => $site_name }),
 		owner   => 'root',
 		group   => 'root',
 		mode    => '0755',
