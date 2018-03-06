@@ -29,18 +29,18 @@ class ufprovisioning::config {
 	nginx::resource::server { $site_name:
 		ensure			=>	present,
 		server_name 	=>	[$site_name],
-		www_root 		=>	'/var/www/${site_name}/public',
+		www_root 		=>	"/var/www/${site_name}/public",
 		listen_port 	=>	80,
 		ssl 			=>	true,
-		ssl_cert		=>	'/etc/letsencrypt/live/${site_name}/fullchain.pem',
-		ssl_key			=>	'/etc/letsencrypt/live/${site_name}/private_key.pem',
+		ssl_cert		=>	"/etc/letsencrypt/live/${site_name}/fullchain.pem",
+		ssl_key			=>	"/etc/letsencrypt/live/${site_name}/privkey.pem",
 		ssl_port		=>	443,
 	}
 	
-	nginx::resource::location { '${site_name}_letsencrypt':
+	nginx::resource::location { "~ /.well-known":
 		ensure			=>	present,
 		server		 	=>	$site_name,
-		www_root 		=>	'/var/www/${site_name}/public/.well_known',
+		#www_root 		=>	"/var/www/${site_name}/public/.well_known",
 	}
 	
 	
