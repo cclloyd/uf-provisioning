@@ -44,16 +44,7 @@ class ufprovisioning::config {
 
 	
 	letsencrypt::certonly { $site_name: }
-	
-	
-	#file { '/etc/ntp.conf':
-	#	ensure  => file,
-	#	owner   => 'root',
-	#	group   => 'root',
-	#	mode    => 0644,
-	#	content => template($module_name/ntp.conf.erb),
-	#}
-	
+
 	nginx::resource::server { $site_name:
 		ensure			=>	present,
 		server_name 	=>	[$site_name],
@@ -71,6 +62,8 @@ class ufprovisioning::config {
 		#www_root 		=>	"/var/www/${site_name}/public/.well_known",
 	}
 	
+	
+	
 	group { 'git':
 		name			=> 'git',
 		ensure			=> 'present',
@@ -82,7 +75,7 @@ class ufprovisioning::config {
 	user { 'git':
 		name		=>	'git',
 		ensure		=>	'present',
-		password	=>	"73aa606f6e0eb06e06b0dc606239564ed65a59af",
+		password	=>	'$1$wormhole$eRgixQGXNFCtyjBpeN2o30',
 		uid			=>	465,
 		gid			=>	465,
 		system		=>	true,
@@ -132,7 +125,6 @@ class ufprovisioning::config {
 	git::config { 'user.name':
 		value => 'git',
 	}
-
 	git::config { 'user.email':
 		value => 'git@cclloyd.com',
 	}
@@ -158,19 +150,6 @@ class ufprovisioning::config {
 	
 	
 	
-	
-	
-	
-	#file { "/etc/nginx/sites-available/cclloyd.com.conf":
-	#	ensure => "present",
-	#	source  => "puppet:///modules/ufprovisioning/conf/cclloyd.com.conf",
-	#	owner   => 'root',
-	#	group   => 'root',
-	#	mode    => '0755',
-	#	require => Package['nginx']
-	#}
-	
-	
 	file { "/testtemplate.conf":
 		ensure => "present",
 		#source  => "puppet:///modules/ufprovisioning/templates/testtemplate.epp",
@@ -182,11 +161,5 @@ class ufprovisioning::config {
 	}
 	
 	
-	
-
-	#file { '/etc/nginx/sites-enabled/cclloyd.com.conf':
-	#	ensure => 'link',
-	#	target => '/etc/nginx/sites-available/cclloyd.com.conf',
-	#}
 
 }
