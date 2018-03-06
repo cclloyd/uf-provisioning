@@ -5,9 +5,13 @@ class ufprovisioning::install {
 		ensure => installed,
 	}
 	
-	class{'nginx':
-		manage_repo => true,
-		package_source => 'nginx-mainline'
+	package { 'nginx':
+		ensure => installed,
 	}
+	
+	#class{'nginx':
+	#	manage_repo => true,
+	#	package_source => 'nginx-mainline'
+	#}
 
 }
