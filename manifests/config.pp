@@ -13,7 +13,7 @@ class ufprovisioning::config {
 		}
 	}
 	
-	letsencrypt::certonly { '${site_name}_certs': 
+	letsencrypt::certonly { $site_name: 
 		domains 	=> [$site_name],
 	}
 	
