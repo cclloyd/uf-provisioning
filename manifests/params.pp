@@ -1,7 +1,7 @@
 
 class ufprovisioning::params {
 	
-	$site_name = "webserver.test"
+	$site_name = "cclloyd.com"
 	$webserver_manage = true
 		
 }
