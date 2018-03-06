@@ -8,10 +8,9 @@ class ufprovisioning::config {
 	
 	class { ::letsencrypt: 
 		email		=> 'cclloyd9786@gmail.com',
-		
 	}
 	
-	letsencrypt::certonly { "${site_name}_certs: 
+	letsencrypt::certonly { '${site_name}_certs': 
 		domains 	=> [$site_name],
 		server => 'https://acme-v01.api.letsencrypt.org/directory',
 	}
