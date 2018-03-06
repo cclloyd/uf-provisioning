@@ -1,9 +1,12 @@
 # == Class: ufprovisioning::config
 class ufprovisioning::config {
-
 	
-	$webserver_manage				= $::ufprovisioning::params::webserver_manage
-	$site_name						= $::ufprovisioning::params::site_name
+	assert_private()
+	
+	$webserver_manage	= $::ufprovisioning::params::webserver_manage
+	$site_name			= $::ufprovisioning::params::site_name
+	
+	
 	
 	
 	#file { '/etc/ntp.conf':
@@ -14,10 +17,10 @@ class ufprovisioning::config {
 	#	content => template($module_name/ntp.conf.erb),
 	#}
 	
-	nginx::resource::server { 'www.puppetlabs.com':
+	nginx::resource::server { 'cclloyd.com':
 		ensure			=>	present,
 		server_name 	=>	[$site_name],
-		www_root 		=>	'/var/www/cclloyd.com',
+		www_root 		=>	'/var/www/${site_name}',
 		listen_port 	=>	80,
 		ssl 			=>	false,
 	}
@@ -30,7 +33,6 @@ class ufprovisioning::config {
 	#	mode    => '0755',
 	#	require => Package['nginx']
 	#}
-	
 	
 	
 	file { "/testtemplate.conf":

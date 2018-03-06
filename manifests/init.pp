@@ -14,11 +14,11 @@ class ufprovisioning (
 	$site_name			= $ufprovisioning::params::site_name,
 	
 
-) inherits ufprovisioning::params {
+) inherits ::ufprovisioning::params {
 
-	contain ufprovisioning::install
-	contain ufprovisioning::config
-	contain ufprovisioning::service
+	contain '::ufprovisioning::install'
+	contain '::ufprovisioning::config'
+	contain '::ufprovisioning::service'
 	
 	# Allow the end user to establish relationships to the "main" class
 	# and preserve the relationship to the implementation classes through
