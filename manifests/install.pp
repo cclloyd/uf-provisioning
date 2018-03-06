@@ -1,13 +1,13 @@
 # == Class: ufprovisioning::install
 class ufprovisioning::install {
-
+	
+	class { 'nginx': }
+	
 	package { 'tree':
 		ensure => installed,
 	}
 	
-	package { 'nginx':
-		ensure => installed,
-	}
+	
 	
 	#class{'nginx':
 	#	manage_repo => true,

@@ -14,14 +14,22 @@ class ufprovisioning::config {
 	#	content => template($module_name/ntp.conf.erb),
 	#}
 	
-	file { "/etc/nginx/sites-available/cclloyd.com.conf":
-		ensure => "present",
-		source  => "puppet:///modules/ufprovisioning/conf/cclloyd.com.conf",
-		owner   => 'root',
-		group   => 'root',
-		mode    => '0755',
-		require => Package['nginx']
+	nginx::resource::server { 'www.puppetlabs.com':
+		ensure			=>	present,
+		server_name 	=>	'cclloyd.com';
+		www_root 		=>	'/var/www/cclloyd.com',
+		listen_port 	=>	80,
+		ssl 			=>	'false',
 	}
+	
+	#file { "/etc/nginx/sites-available/cclloyd.com.conf":
+	#	ensure => "present",
+	#	source  => "puppet:///modules/ufprovisioning/conf/cclloyd.com.conf",
+	#	owner   => 'root',
+	#	group   => 'root',
+	#	mode    => '0755',
+	#	require => Package['nginx']
+	#}
 	
 	
 	
