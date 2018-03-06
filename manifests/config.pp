@@ -3,8 +3,8 @@ class ufprovisioning::config {
 	
 	assert_private()
 	
-	$webserver_manage	= $::ufprovisioning::params::webserver_manage
-	$site_name			= $::ufprovisioning::params::site_name
+	$webserver_manage	= $::ufprovisioning::webserver_manage
+	$site_name			= $::ufprovisioning::site_name
 	
 	class { ::letsencrypt: 
 		config => {
