@@ -59,7 +59,7 @@ class ufprovisioning::config {
 		ensure		=>	'directory',
 		owner		=>	'git',
 		group		=>	'git',
-		mode		=>	755,
+		mode		=>	'755',
 	}
 	
 	vcsrepo{ "/var/repo/${site_name}.git":
