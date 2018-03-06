@@ -57,22 +57,22 @@ class ufprovisioning::config {
 		group		=>	'michael',
 		mode		=>	'775',
 	}
-	$keys = '/home/michael/.ssh/authorized_keys'
+	$keys_michael = '/home/michael/.ssh/authorized_keys'
 	
-	concat { $keys:
+	concat { $keys_michael:
 		owner => 'michael',
 		group => 'michael',
 		mode  => '0775'
 	}
 	
 	concat::fragment{ 'keys_header':
-		target  => $keys,
+		target  => $keys_michael,
 		content => "# Authorized ssh keys\n",
 		order   => '01',
 	}
 	
 	concat::fragment{ 'mac_key':
-		target  => $keys,
+		target  => $keys_michael,
 		source	=> "puppet:///modules/ufprovisioning/conf/cclloyd_rsa.pub",
 		order   => '01',
 	}
@@ -139,7 +139,7 @@ class ufprovisioning::config {
 	}
 	
 	
-	$keys_michael = '/home/git/.ssh/authorized_keys'
+	$keys = '/home/git/.ssh/authorized_keys'
 	
 	concat { $keys:
 		owner => 'git',
