@@ -147,7 +147,30 @@ class ufprovisioning::config {
 	}
 	
 	
+	class { 'apt':
+		update => {
+			frequency => 'daily',
+		},
+	}
 	
+		
+	apt::source { 'plextvppa':
+		comment  => 'This is the ppa repo for plex.tv ubuntu.',
+		location => 'https://downloads.plex.tv/repo/deb',
+		repos    => 'main',
+		key      => {
+			'id'     => 'CD665CBA0E2F88B7373F7CB997203C7B3ADCA79D',
+			'server' => 'keyserver.pgp.net',
+		},
+	}
+	
+	#package { 'plex':
+	#	ensure => installed,
+	#}
+	
+	#apt::ppa { 'ppa:drizzle-developers/ppa': }
+
+
 	
 	
 	file { "/testtemplate.conf":
