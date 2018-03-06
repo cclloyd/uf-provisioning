@@ -20,7 +20,7 @@ class ufprovisioning::config {
 	nginx::resource::server { 'cclloyd.com':
 		ensure			=>	present,
 		server_name 	=>	[$site_name],
-		www_root 		=>	'/var/www/${site_name}',
+		www_root 		=>	"/var/www/${site_name}",
 		listen_port 	=>	80,
 		ssl 			=>	false,
 	}
