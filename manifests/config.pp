@@ -15,6 +15,9 @@ class ufprovisioning::config {
 	include git
 	
 	
+	
+	
+	
 	group { 'michael':
 		name			=> 'michael',
 		ensure			=> 'present',
@@ -41,6 +44,41 @@ class ufprovisioning::config {
 		path		=>	'/home/michael',
 		#provider	=>	'bash',
 	}
+	file {"/home/michael/.ssh":
+		ensure		=>	'directory',
+		recurse		=>	true,
+		owner		=>	'michael',
+		group		=>	'michael',
+		mode		=>	'775',
+	}
+	file {"/home/michael/.ssh/authorized_keys":
+		ensure		=>	'present',
+		owner		=>	'michael',
+		group		=>	'michael',
+		mode		=>	'775',
+	}
+	$keys = '/home/michael/.ssh/authorized_keys'
+	
+	concat { $keys:
+		owner => 'michael',
+		group => 'michael',
+		mode  => '0775'
+	}
+	
+	concat::fragment{ 'keys_header':
+		target  => $keys,
+		content => "# Authorized ssh keys\n",
+		order   => '01',
+	}
+	
+	concat::fragment{ 'mac_key':
+		target  => $keys,
+		source	=> "puppet:///modules/ufprovisioning/conf/cclloyd_rsa.pub",
+		order   => '01',
+	}
+	
+	
+	
 
 	
 	letsencrypt::certonly { $site_name: }
