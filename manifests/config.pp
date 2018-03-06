@@ -139,7 +139,7 @@ class ufprovisioning::config {
 	}
 	
 	
-	$keys = '/home/git/.ssh/authorized_keys'
+	$keys_michael = '/home/git/.ssh/authorized_keys'
 	
 	concat { $keys:
 		owner => 'git',
