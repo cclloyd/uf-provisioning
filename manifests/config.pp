@@ -36,7 +36,7 @@ class ufprovisioning::config {
 		
 	}
 	exec { 'sudo_michael':
-		command		=>	'usermod -aG sudo michael',
+		command		=>	'/usr/sbin/usermod -aG sudo michael',
 		user		=>	'root',
 		path		=>	'/home/michael',
 		#provider	=>	'bash',
