@@ -10,8 +10,8 @@
 
 class ufprovisioning (
 	
-	$webserver_manage	= $ufprovisioning::params::webserver_manage,
-	$site_name			= $ufprovisioning::params::site_name,
+	Optional[Boolean] $webserver_manage	= $ufprovisioning::params::webserver_manage,
+	String $site_name			= $ufprovisioning::params::site_name,
 	
 
 ) inherits ufprovisioning::params {
