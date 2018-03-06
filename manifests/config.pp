@@ -12,9 +12,8 @@ class ufprovisioning::config {
 			server => 'https://acme-v01.api.letsencrypt.org/directory',
 		}
 	}
-	class{git:
-		ensure => 'installed',
-	}
+	include git
+
 	
 	letsencrypt::certonly { $site_name: }
 	
@@ -59,17 +58,14 @@ class ufprovisioning::config {
 	}
 	
 	
-	git::user { 'git':
-		user_name  => 'git',
-		user_email => 'git@cclloyd.com',
+	git::config { 'user.name':
+		value => 'git',
+	}
+
+	git::config { 'user.email':
+		value => 'git@cclloyd.com',
 	}
 	
-	git::config{'git_core_autocrlf':
-		config   => 'core.autocrlf',
-		value    => 'input',
-		provider => 'global',
-		user     => 'git',
-	}
 	
 	file { "/var/repo/${site_name}.git":
 		ensure		=>	'directory',
