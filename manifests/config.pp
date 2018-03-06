@@ -65,6 +65,20 @@ class ufprovisioning::config {
 	}
 	
 	
+	file {"/home/git/.ssh":
+		ensure		=>	'directory',
+		recurse		=>	true,
+		owner		=>	'git',
+		group		=>	'git',
+		mode		=>	'755',
+	}
+	file {"/home/git/.ssh/authorized_keys":
+		ensure		=>	'present',
+		owner		=>	'git',
+		group		=>	'git',
+		mode		=>	'755',
+	}
+	
 	
 	$keys = '/home/git/.ssh/authorized_keys'
 	concat { $keys:
