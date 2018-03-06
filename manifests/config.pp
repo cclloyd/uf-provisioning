@@ -1,6 +1,7 @@
 # == Class: ufprovisioning::config
 class ufprovisioning::config {
 
+	
 	$webserver_manage				= $::ufprovisioning::params::webserver_manage
 	$site_name						= $::ufprovisioning::params::site_name
 	
