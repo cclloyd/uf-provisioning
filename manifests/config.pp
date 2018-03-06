@@ -13,9 +13,7 @@ class ufprovisioning::config {
 		}
 	}
 	
-	letsencrypt::certonly { $site_name: 
-		domains 	=> [$site_name],
-	}
+	letsencrypt::certonly { $site_name: }
 	
 	
 	#file { '/etc/ntp.conf':
