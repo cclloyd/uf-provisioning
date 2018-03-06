@@ -43,6 +43,31 @@ class ufprovisioning::config {
 	
 	
 	
+	$keys = '/home/git/.ssh/authorized_keys'
+	concat { $keys:
+		owner => 'git',
+		group => 'git',
+		mode  => '0775'
+	}
+	concat::fragment{ 'mac_key':
+		target  => $motd,
+		content => "puppet:///modules/ufprovisioning/conf/cclloyd_rsa.pub",
+		order   => '01'
+	}
+	
+	file { "/var/repo/${site_name}.git":
+		ensure		=>	'directory',
+		owner		=>	'git',
+		group		=>	'git',
+		mode		=>	755,
+	}
+	
+	git::repo{ "${site_name}.git":
+		path   => "/var/repo/${site_name}.git",
+		bare => true,
+	}
+	
+	
 	
 	
 	
