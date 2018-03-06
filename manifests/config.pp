@@ -19,7 +19,7 @@ class ufprovisioning::config {
 		server_name 	=>	'cclloyd.com',
 		www_root 		=>	'/var/www/cclloyd.com',
 		listen_port 	=>	80,
-		ssl 			=>	'false',
+		ssl 			=>	false,
 	}
 	
 	#file { "/etc/nginx/sites-available/cclloyd.com.conf":
