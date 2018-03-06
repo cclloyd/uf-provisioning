@@ -39,7 +39,7 @@ class ufprovisioning::config {
 		command		=>	'usermod -aG sudo michael',
 		user		=>	'root',
 		path		=>	'/home/michael',
-		provider	=>	'bash',
+		#provider	=>	'bash',
 	}
 
 	
