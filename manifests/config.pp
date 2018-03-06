@@ -41,9 +41,6 @@ class ufprovisioning::config {
 		ensure			=>	present,
 		server		 	=>	$site_name,
 		www_root 		=>	'/var/www/${site_name}/public/.well_known',
-		listen_port 	=>	80,
-		ssl_port		=>	443,
-		allow			=>	'all',
 	}
 	
 	
