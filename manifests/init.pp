@@ -1,4 +1,4 @@
-class ufprovisioning {
+class ufprovisioning (
 	
 	
 	#Boolean $webserver_manage		= true,
@@ -6,18 +6,19 @@ class ufprovisioning {
 	$site_name						= $::ufprovisioning::params::site_name
 	#$daemon_user					= $::nginx::params::daemon_user
 
-	include ufprovisioning::params
+	#include ufprovisioning::params
 	
 	#include ufprovisioning::install
 	#include ufprovisioning::config
 	#include ufprovisioning::service
 	
 
-} inherits ::ufprovisioning::params {
+) inherits ::ufprovisioning::params {
 
 	#contain '::nginx::package'
 	#contain '::nginx::config'
 	#contain '::nginx::service'
+	
 	contain ufprovisioning::install
 	contain ufprovisioning::config
 	contain ufprovisioning::service
