@@ -48,7 +48,8 @@ extract() {
 }
 
 color() {
-	LS_COLORS="`eval $(dircolors $1)`"
+	echo "Setting color for $1"
+	LS_COLORS=`eval $(dircolors $1)`
 	export LS_COLORS
 }
 
