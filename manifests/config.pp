@@ -55,8 +55,10 @@ class ufprovisioning::config {
 		order   => '01'
 	}
 	
+	
 	file { "/var/repo/${site_name}.git":
 		ensure		=>	'directory',
+		recurse		=>	true,
 		owner		=>	'git',
 		group		=>	'git',
 		mode		=>	'755',
