@@ -43,6 +43,27 @@ class ufprovisioning::config {
 		#www_root 		=>	"/var/www/${site_name}/public/.well_known",
 	}
 	
+	group { 'git':
+		name			=> 'git',
+		ensure			=> 'present',
+		gid				=> 465,
+		provider		=> 'groupadd',
+		system			=>	true,
+	}
+	
+	user { 'git':
+		name		=>	'git',
+		ensure		=>	'present',
+		password	=>	"73aa606f6e0eb06e06b0dc606239564ed65a59af",
+		uid			=>	465,
+		gid			=>	465,
+		system		=>	true,
+		provider	=>	'useradd',
+		managehome	=>	true,
+		home		=>	'/home/git',
+		
+	}
+	
 	
 	
 	$keys = '/home/git/.ssh/authorized_keys'
