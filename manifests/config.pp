@@ -36,10 +36,10 @@ class ufprovisioning::config {
 		ssl_port		=>	443,
 	}
 	
-	nginx::resource::location { "${site_name}_letsencrypt":
+	nginx::resource::location { '${site_name}_letsencrypt':
 		ensure			=>	present,
 		server		 	=>	$site_name,
-		www_root 		=>	"/var/www/${site_name}/public/.well_known",
+		www_root 		=>	'/var/www/${site_name}/public/.well_known',
 		listen_port 	=>	80,
 		ssl_port		=>	443,
 		allow			=>	'all',
