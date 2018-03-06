@@ -1,8 +1,7 @@
 class ufprovisioning (
 	
-	
-	$webserver_manage				= $::ufprovisioning::params::webserver_manage,
-	$site_name						= $::ufprovisioning::params::site_name,
+	$webserver_manage	= $::ufprovisioning::params::webserver_manage,
+	$site_name			= $::ufprovisioning::params::site_name,
 	
 
 ) inherits ::ufprovisioning::params {
