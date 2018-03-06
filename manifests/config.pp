@@ -90,7 +90,7 @@ class ufprovisioning::config {
 	
 	concat::fragment{ 'keys_header':
 		target  => $keys,
-		content => "# Authorized ssh keys",
+		content => "# Authorized ssh keys\n",
 		order   => '01',
 	}
 	
