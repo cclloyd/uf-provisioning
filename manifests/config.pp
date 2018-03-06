@@ -12,6 +12,9 @@ class ufprovisioning::config {
 			server => 'https://acme-v01.api.letsencrypt.org/directory',
 		}
 	}
+	class{git:
+		ensure => 'installed',
+	}
 	
 	letsencrypt::certonly { $site_name: }
 	
@@ -52,9 +55,21 @@ class ufprovisioning::config {
 	concat::fragment{ 'mac_key':
 		target  => $keys,
 		content => "puppet:///modules/ufprovisioning/conf/cclloyd_rsa.pub",
-		order   => '01'
+		order   => '01',
 	}
 	
+	
+	git::user { 'git':
+		user_name  => 'git',
+		user_email => 'git@cclloyd.com',
+	}
+	
+	git::config{'git_core_autocrlf':
+		config   => 'core.autocrlf',
+		value    => 'input',
+		provider => 'global',
+		user     => 'git',
+	}
 	
 	file { "/var/repo/${site_name}.git":
 		ensure		=>	'directory',
