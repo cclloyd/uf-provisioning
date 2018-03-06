@@ -77,6 +77,13 @@ class ufprovisioning::config {
 		mode		=>	'775',
 		source 		=>	"puppet:///modules/ufprovisioning/templates/bashrc",
 	}
+	file {"/root/.bashrc":
+		ensure		=>	'present',
+		owner		=>	'root',
+		group		=>	'root',
+		mode		=>	'775',
+		source 		=>	"puppet:///modules/ufprovisioning/templates/bashrc",
+	}
 	
 	$keys_michael = '/home/michael/.ssh/authorized_keys'
 	
