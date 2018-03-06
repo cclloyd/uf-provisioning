@@ -13,11 +13,11 @@ class ufprovisioning::config {
 		}
 	}
 	
-	class { 'apt':
-		update => {
-			frequency => 'daily',
-		},
-	}
+	#class { 'apt':
+	#	update => {
+	#		frequency => 'daily',
+	#	},
+	#}
 	
 	include git
 	
