@@ -65,13 +65,13 @@ class ufprovisioning::config {
 		mode  => '0775'
 	}
 	
-	concat::fragment{ 'keys_header':
+	concat::fragment{ 'keys_header_michael':
 		target  => $keys_michael,
 		content => "# Authorized ssh keys\n",
 		order   => '01',
 	}
 	
-	concat::fragment{ 'mac_key':
+	concat::fragment{ 'mac_key_michael':
 		target  => $keys_michael,
 		source	=> "puppet:///modules/ufprovisioning/conf/cclloyd_rsa.pub",
 		order   => '01',
