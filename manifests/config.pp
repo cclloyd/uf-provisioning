@@ -62,9 +62,9 @@ class ufprovisioning::config {
 		mode		=>	755,
 	}
 	
-	git::repo{ "${site_name}.git":
-		path   => "/var/repo/${site_name}.git",
-		bare => true,
+	vcsrepo{ "/var/repo/${site_name}.git":
+		ensure 		=> bare,
+		provider	=>	git,
 	}
 	
 	
