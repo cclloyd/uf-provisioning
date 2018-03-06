@@ -16,7 +16,7 @@ class ufprovisioning::config {
 	
 	nginx::resource::server { 'www.puppetlabs.com':
 		ensure			=>	present,
-		server_name 	=>	'cclloyd.com';
+		server_name 	=>	'cclloyd.com',
 		www_root 		=>	'/var/www/cclloyd.com',
 		listen_port 	=>	80,
 		ssl 			=>	'false',
