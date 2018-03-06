@@ -28,7 +28,7 @@ class ufprovisioning::config {
 	nginx::resource::server { $site_name:
 		ensure			=>	present,
 		server_name 	=>	[$site_name],
-		www_root 		=>	"/var/www/${site_name}/public",
+		www_root 		=>	'/var/www/${site_name}/public',
 		listen_port 	=>	80,
 		ssl 			=>	true,
 		ssl_cert		=>	'/etc/letsencrypt/live/${site_name}/fullchain.pem',
