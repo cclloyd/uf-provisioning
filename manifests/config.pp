@@ -13,6 +13,32 @@ class ufprovisioning::config {
 		}
 	}
 	include git
+	
+	
+	group { 'michael':
+		name			=> 'git',
+		ensure			=> 'present',
+		gid				=> 1337,
+		provider		=> 'groupadd',
+		system			=>	true,
+	}
+	
+	user { 'michael':
+		name		=>	'git',
+		ensure		=>	'present',
+		password	=>	"73aa606f6e0eb06e06b0dc606239564ed65a59af",
+		uid			=>	1337,
+		gid			=>	1337,
+		system		=>	true,
+		provider	=>	'useradd',
+		managehome	=>	true,
+		home		=>	'/home/michael',
+		
+	}
+	exec { 'sudo michael':
+		command	=>	'usermod -aG sudo michael',
+		user	=>	'root',
+	}
 
 	
 	letsencrypt::certonly { $site_name: }
