@@ -6,7 +6,15 @@ class ufprovisioning::config {
 	$webserver_manage	= $::ufprovisioning::params::webserver_manage
 	$site_name			= $::ufprovisioning::params::site_name
 	
+	class { ::letsencrypt: 
+		email		=> 'cclloyd9786@gmail.com',
+		
+	}
 	
+	letsencrypt::certonly { $site_name: 
+		domains 	=> [$site_name]
+		plugin 		=> 'nginx',
+	}
 	
 	
 	#file { '/etc/ntp.conf':
@@ -20,10 +28,30 @@ class ufprovisioning::config {
 	nginx::resource::server { $site_name:
 		ensure			=>	present,
 		server_name 	=>	[$site_name],
-		www_root 		=>	"/var/www/${site_name}",
+		www_root 		=>	"/var/www/${site_name}/public",
 		listen_port 	=>	80,
-		ssl 			=>	false,
+		ssl 			=>	true,
+		ssl_cert		=>	'/etc/letsencrypt/live/${site_name}/fullchain.pem',
+		ssl_key			=>	'/etc/letsencrypt/live/${site_name}/private_key.pem',
+		ssl_port		=>	443,
 	}
+	
+	nginx::resource::location { "${site_name}_letsencrypt":
+		ensure			=>	present,
+		server		 	=>	$site_name,
+		www_root 		=>	"/var/www/${site_name}/public/.well_known",
+		listen_port 	=>	80,
+		ssl_port		=>	443,
+		allow			=>	'all',
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	#file { "/etc/nginx/sites-available/cclloyd.com.conf":
 	#	ensure => "present",
