@@ -7,8 +7,8 @@ class ufprovisioning::params {
 	#	'webserver_manage'		=> true,
 	#}
 	
-	$site_name # = "webserver.test"
-	$webserver_manage # = true
+	$site_name = "webserver.test"
+	$webserver_manage = true
 	
 	#$_module_parameters = merge($_module_defaults, $_module_os_overrides)
 	
