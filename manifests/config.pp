@@ -67,7 +67,7 @@ class ufprovisioning::config {
 	}
 	
 	
-	file { "/var/repo/${site_name}.git":
+	file { '/var/repo/${site_name}.git':
 		ensure		=>	'directory',
 		recurse		=>	true,
 		owner		=>	'git',
@@ -75,7 +75,7 @@ class ufprovisioning::config {
 		mode		=>	'755',
 	}
 	
-	vcsrepo{ "/var/repo/${site_name}.git":
+	vcsrepo{ '/var/repo/${site_name}.git':
 		ensure 		=> bare,
 		provider	=>	git,
 	}
