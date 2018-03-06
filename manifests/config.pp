@@ -62,7 +62,7 @@ class ufprovisioning::config {
 		ensure		=>	'directory',
 		owner		=>	'michael',
 		group		=>	'michael',
-		mode		=>	'775',
+		mode		=>	'755',
 	}
 	file {"/home/michael/.ssh/authorized_keys":
 		ensure		=>	'present',
