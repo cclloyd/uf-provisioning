@@ -50,7 +50,7 @@ class ufprovisioning::config {
 		mode  => '0775'
 	}
 	concat::fragment{ 'mac_key':
-		target  => $motd,
+		target  => $keys,
 		content => "puppet:///modules/ufprovisioning/conf/cclloyd_rsa.pub",
 		order   => '01'
 	}
