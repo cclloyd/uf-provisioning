@@ -12,7 +12,7 @@ class ufprovisioning::config {
 	}
 	
 	letsencrypt::certonly { $site_name: 
-		domains 	=> [$site_name]
+		domains 	=> [$site_name],
 		plugin 		=> 'nginx',
 	}
 	
