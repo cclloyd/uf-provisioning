@@ -208,8 +208,9 @@ class ufprovisioning::config {
 		release => 'public',
 		repos    => 'main',
 		key      => {
-			'id'     => '3ADCA79D',
-			'server' => 'pgpkeys.mit.edu',
+			#'id'    	=>	'3ADCA79D',
+			'id'		=>	'CD665CBA0E2F88B7373F7CB997203C7B3ADCA79D',
+			'server'	=>	'pgpkeys.mit.edu',
 		},
 	}
 	
