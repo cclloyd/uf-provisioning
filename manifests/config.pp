@@ -12,6 +12,13 @@ class ufprovisioning::config {
 			server => 'https://acme-v01.api.letsencrypt.org/directory',
 		}
 	}
+	
+	class { 'apt':
+		update => {
+			frequency => 'daily',
+		},
+	}
+	
 	include git
 	
 	
@@ -185,11 +192,7 @@ class ufprovisioning::config {
 	}
 	
 	
-	class { 'apt':
-		update => {
-			frequency => 'daily',
-		},
-	}
+
 	
 		
 	apt::source { 'plextvppa':
@@ -206,7 +209,6 @@ class ufprovisioning::config {
 	#	ensure => installed,
 	#}
 	
-	#apt::ppa { 'ppa:drizzle-developers/ppa': }
 
 
 	
