@@ -19,7 +19,6 @@ class ufprovisioning::config {
 			server => 'https://acme-v01.api.letsencrypt.org/directory',
 		}
 	}
-	
 	#class { 'apt':
 	#	update => {
 	#		frequency => 'daily',
@@ -267,33 +266,35 @@ class ufprovisioning::config {
 	###  Deluge
 	######################################################	
 	
-	apt::ppa { 'ppa:deluge-team/ppa': }
+	class { 'deluge': }
 
-	package { [
-		'deluge',
-		'deluged',
-		'deluge-webui',
-		'deluge-console',
-		#'python', 
-		#'python-twisted',
-		#'python-twisted-web',
-		#'python-openssl',
-		#'python-simplejson',
-		#'python-setuptools',
-		#'intltool',
-		#'python-xdg,
-		#'python-chardet',
-		#'geoip-database',
-		#'python-libtorrent',
-		#'python-notify',
-		#'python-pygame',
-		#'python-glade2',
-		#'librsvg2-common',
-		#'xdg-utils',
-		#'python-mako',
-	]:
-		ensure => installed,
-	}
+	#apt::ppa { 'ppa:deluge-team/ppa': }
+
+	#package { [
+	#	'deluge',
+	#	'deluged',
+	#	'deluge-webui',
+	#	'deluge-console',
+	#	#'python', 
+	#	#'python-twisted',
+	#	#'python-twisted-web',
+	#	#'python-openssl',
+	#	#'python-simplejson',
+	#	#'python-setuptools',
+	#	#'intltool',
+	#	#'python-xdg,
+	#	#'python-chardet',
+	#	#'geoip-database',
+	#	#'python-libtorrent',
+	#	#'python-notify',
+	#	#'python-pygame',
+	#	#'python-glade2',
+	#	#'librsvg2-common',
+	#	#'xdg-utils',
+	#	#'python-mako',
+	#]:
+	#	ensure => installed,
+	#}
 	
 	
 	
