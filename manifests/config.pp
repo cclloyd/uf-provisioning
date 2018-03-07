@@ -108,7 +108,9 @@ class ufprovisioning::config {
 	
 	
 
-	
+	service { 'nginx':
+		ensure 	=>	'stopped',
+	}
 	letsencrypt::certonly { $site_name: }
 	letsencrypt::certonly { "stats.${site_name}": }
 
