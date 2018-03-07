@@ -262,7 +262,7 @@ class ufprovisioning::config {
 		grafana_url       => 'http://stats.cclloyd.com:3000',
 		grafana_user      => 'admin',
 		grafana_password  => 'password',
-		grafana_api_path  => '/grafana/api'
+		grafana_api_path  => '/grafana/api',
 		organization      => 'NewOrg',
 		content           => template('path/to/exported/file.json'),
 	}
