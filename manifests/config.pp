@@ -264,7 +264,7 @@ class ufprovisioning::config {
 		grafana_password  => 'password',
 		grafana_api_path  => '/grafana/api',
 		organization      => 'NewOrg',
-		content           => template('path/to/exported/file.json'),
+		#content           => template('path/to/exported/file.json'),
 	}
 
 
