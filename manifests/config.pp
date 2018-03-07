@@ -267,7 +267,7 @@ class ufprovisioning::config {
 	######################################################	
 	
 	#class { 'deluge': }
-	class { 'freebsd_deluge_light': }
+	class { 'puppet_deluge': }
 
 	#apt::ppa { 'ppa:deluge-team/ppa': }
 
