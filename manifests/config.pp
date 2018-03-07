@@ -254,7 +254,7 @@ class ufprovisioning::config {
 	
 	grafana_user { 'username':
 		grafana_url       => 'http://localhost:3000',
-		grafana_api_path  => '/grafana/api'
+		grafana_api_path  => '/grafana/api',
 		grafana_user      => 'admin',
 		grafana_password  => 'password',
 		full_name         => 'Admin User',
