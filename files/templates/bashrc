@@ -62,10 +62,17 @@ export LS_COLORS
 
 
 
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     machine=Linux;;
+    Darwin*)    machine=Mac;;
+    CYGWIN*)    machine=Cygwin;;
+    MINGW*)     machine=MinGw;;
+    *)          machine="UNKNOWN:${unameOut}"
+esac
 
 
-
-if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+if [ $unameOut == "Linux" ]; then
 
 	alias deploy="r10k deploy environment -p production --verbose"
 	alias apply="puppet agent -t --verbose"
@@ -78,12 +85,15 @@ fi
 
 
 
+
 # Mac specific settings
-if [ "$(expr substr $(uname -s) 1 6)" == "Darwin" ]; then
+if [ $unameOut == "Darwin" ]; then
+	alias ls="ls"
 
 	export CLICOLOR=1
 	export LSCOLORS=GxFxCxDxBxegedabagaced
-
+	#export LSCOLORS=$LS_COLORS
+	
 	alias bashrc="nano ~/.bash_profile; source ~/.bash_profile"
 	
 	alias websrd="cd '/Users/Michael/Development/Web/Vagrant/opensrd.com/homestead'; vagrant ssh"
@@ -114,7 +124,7 @@ if [ "$(expr substr $(uname -s) 1 6)" == "Darwin" ]; then
 	alias composer="php /usr/local/bin/composer.phar"
 	eval $(thefuck --alias)
 	alias dm='dark-mode'
-	alias lolcat-c='~/lolcat'
+	#alias lolcat-c='~/lolcat'
 	#alias lolcat='~/lolcat'
 	alias fixssh="nano ~/.ssh/known_hosts"
 	alias copyid="pbcopy < ~/.ssh/"
