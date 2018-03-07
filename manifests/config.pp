@@ -297,7 +297,7 @@ class ufprovisioning::config {
 	#	ensure => installed,
 	#}
 	
-	include transmission
+	include 'transmission'
 	
 	class { 'transmission':
 		rpc_username => 'rpcuser',
