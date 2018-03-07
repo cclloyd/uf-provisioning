@@ -52,8 +52,8 @@ class ufprovisioning::config {
 		provider	=>	'useradd',
 		managehome	=>	true,
 		home		=>	'/home/michael',
-		
 	}
+	
 	exec { 'sudo_michael':
 		command		=>	'/usr/sbin/usermod -aG sudo michael',
 		user		=>	'root',
@@ -61,6 +61,16 @@ class ufprovisioning::config {
 		#provider	=>	'bash',
 	}
 	
+	
+	user { 'deluge':
+		name		=>	'deluge',
+		ensure		=>	'present',
+		#password	=>	'$1$wormhole$eRgixQGXNFCtyjBpeN2o30',
+		system		=>	true,
+		provider	=>	'useradd',
+		#managehome	=>	true,
+		home		=>	'/var/lib/deluge',
+	}
 	
 	
 	
