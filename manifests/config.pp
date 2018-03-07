@@ -239,6 +239,9 @@ class ufprovisioning::config {
 			app_mode => 'production',
 			server   => {
 				port	=>	3000,
+				ssl_mode 		=> require,
+				ssl_cert			=>	"/etc/letsencrypt/live/stats.${site_name}/fullchain.pem",
+				cert_key			=>	"/etc/letsencrypt/live/stats.${site_name}/privkey.pem",
 			},
 			database => {
 				type          => 'sqlite3',
@@ -276,9 +279,6 @@ class ufprovisioning::config {
 		#grafana_api_path  => '/grafana/api',
 		organization      => 'NewOrg',
 		#content           => template('path/to/exported/file.json'),
-		ssl_mode 		=> require,
-		ssl_cert			=>	"/etc/letsencrypt/live/stats.${site_name}/fullchain.pem",
-		cert_key			=>	"/etc/letsencrypt/live/stats.${site_name}/privkey.pem",
 	}
 
 
