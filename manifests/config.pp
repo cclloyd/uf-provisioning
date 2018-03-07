@@ -266,7 +266,8 @@ class ufprovisioning::config {
 	###  Deluge
 	######################################################	
 	
-	class { 'deluge': }
+	#class { 'deluge': }
+	class { 'puppet_deluge': }
 
 	#apt::ppa { 'ppa:deluge-team/ppa': }
 
