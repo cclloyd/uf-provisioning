@@ -260,6 +260,7 @@ class ufprovisioning::config {
 	apt::ppa { 'ppa:deluge-team/ppa': }
 
 	package { [
+		'deluge',
 		'deluged',
 		'deluge-webui',
 	]:
