@@ -300,8 +300,8 @@ class ufprovisioning::config {
 	include 'transmission'
 	
 	class { 'transmission':
-		rpc_username => 'rpcuser',
-		rpc_password => 'rpcpassword',
+		#rpc_username => 'rpcuser',
+		#rpc_password => 'rpcpassword',
 		rpc_port     => 8080,
 		peer_port    => 54612,
 		encryption   => 2,
