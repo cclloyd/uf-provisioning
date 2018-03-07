@@ -3,6 +3,13 @@ class ufprovisioning::config {
 	
 	assert_private()
 	
+	
+	#######################################################
+	####                            #######################
+	###   Dependencies and Classes   ######################
+	####                            #######################
+	#######################################################
+	
 	$webserver_manage	= $::ufprovisioning::webserver_manage
 	$site_name			= $::ufprovisioning::site_name
 	
@@ -23,7 +30,9 @@ class ufprovisioning::config {
 	
 	
 	
-	
+	######################################################
+	###  Users
+	######################################################
 	
 	group { 'michael':
 		name			=> 'michael',
@@ -51,6 +60,14 @@ class ufprovisioning::config {
 		path		=>	'/home/michael',
 		#provider	=>	'bash',
 	}
+	
+	
+	
+	
+	######################################################
+	###  SSH Keys
+	######################################################
+	
 	file {"/home/michael":
 		ensure		=>	'directory',
 		recurse		=>	true,
@@ -69,20 +86,6 @@ class ufprovisioning::config {
 		owner		=>	'michael',
 		group		=>	'michael',
 		mode		=>	'775',
-	}
-	file {"/home/michael/.bashrc":
-		ensure		=>	'present',
-		owner		=>	'michael',
-		group		=>	'michael',
-		mode		=>	'775',
-		source 		=>	"puppet:///modules/ufprovisioning/templates/bashrc",
-	}
-	file {"/root/.bashrc":
-		ensure		=>	'present',
-		owner		=>	'root',
-		group		=>	'root',
-		mode		=>	'775',
-		source 		=>	"puppet:///modules/ufprovisioning/templates/bashrc",
 	}
 	
 	$keys_michael = '/home/michael/.ssh/authorized_keys'
@@ -107,16 +110,40 @@ class ufprovisioning::config {
 	
 	
 	
-	exec { 'stopnginx':
-		command		=>	'service nginx stop',
-		user		=>	'root',
-		path		=>	'/usr/bin:/usr/sbin',
-		#provider	=>	'bash',
+	######################################################
+	###  Bash Customization
+	######################################################
+	
+	file {"/home/michael/.bashrc":
+		ensure		=>	'present',
+		owner		=>	'michael',
+		group		=>	'michael',
+		mode		=>	'775',
+		source 		=>	"puppet:///modules/ufprovisioning/templates/bashrc",
 	}
+	file {"/root/.bashrc":
+		ensure		=>	'present',
+		owner		=>	'root',
+		group		=>	'root',
+		mode		=>	'775',
+		source 		=>	"puppet:///modules/ufprovisioning/templates/bashrc",
+	}
+	
+	
+	
+	######################################################
+	###  SSL
+	######################################################
+	
 	letsencrypt::certonly { $site_name: }
-	letsencrypt::certonly { "stats.${site_name}": 
-		#require		=>	Service['nginx']
-	}
+	letsencrypt::certonly { "stats.${site_name}":	}
+	
+	
+	
+	
+	######################################################
+	###  Nginx
+	######################################################
 	
 	nginx::resource::server { $site_name:
 		ensure			=>	present,
@@ -137,6 +164,16 @@ class ufprovisioning::config {
 	
 	
 	
+	
+	
+	
+	
+	######################################################
+	###  Git
+	######################################################
+	
+	$keys = '/home/git/.ssh/authorized_keys'
+
 	group { 'git':
 		name			=> 'git',
 		ensure			=> 'present',
@@ -158,7 +195,6 @@ class ufprovisioning::config {
 		
 	}
 	
-	
 	file {"/home/git/.ssh":
 		ensure		=>	'directory',
 		recurse		=>	true,
@@ -173,8 +209,6 @@ class ufprovisioning::config {
 		mode		=>	'775',
 	}
 	
-	
-	$keys = '/home/git/.ssh/authorized_keys'
 	
 	concat { $keys:
 		owner => 'git',
@@ -193,7 +227,6 @@ class ufprovisioning::config {
 		source	=> "puppet:///modules/ufprovisioning/conf/cclloyd_rsa.pub",
 		order   => '01',
 	}
-	
 	
 	git::config { 'user.name':
 		value => 'git',
@@ -220,9 +253,26 @@ class ufprovisioning::config {
 	}
 	
 	
-
+	######################################################
+	###  Deluge
+	######################################################	
 	
-		
+	apt::ppa { 'ppa:deluge-team/ppa': }
+
+	package { [
+		'deluged',
+		'deluge-webui',
+	]:
+		ensure => installed,
+	}
+	
+	
+	
+	
+	######################################################
+	###  Plex Media Server
+	######################################################
+	
 	apt::source { 'plexmediaserver':
 		comment  => 'This is the apt repo for plex.tv on Ubuntu.',
 		location => 'https://downloads.plex.tv/repo/deb',
@@ -239,6 +289,11 @@ class ufprovisioning::config {
 		ensure => installed,
 	}
 	
+	
+	
+	######################################################
+	###  Grafana
+	######################################################
 
 	class { 'grafana': 
 		cfg => {
@@ -286,8 +341,16 @@ class ufprovisioning::config {
 		organization      => 'NewOrg',
 		#content           => template('path/to/exported/file.json'),
 	}
+	
+	
+	
 
-
+	
+	
+	
+	######################################################
+	###  Testing
+	######################################################
 	
 	
 	file { "/testtemplate.conf":
