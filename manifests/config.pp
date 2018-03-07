@@ -273,6 +273,7 @@ class ufprovisioning::config {
 		'deluge',
 		'deluged',
 		'deluge-webui',
+		'deluge-console',
 	]:
 		ensure => installed,
 	}
