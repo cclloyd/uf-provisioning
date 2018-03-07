@@ -246,14 +246,14 @@ class ufprovisioning::config {
 				user          => 'root',
 				password      => '',
 			},
-				users    => {
+			users    => {
 				allow_sign_up => false,
 			},
 		},
 	}
 	
 	grafana_user { 'admin':
-		grafana_url       => 'http://localhost:3000',
+		grafana_url      => 'http://stats.cclloyd.com:3000',
 		grafana_api_path  => '/grafana/api',
 		grafana_user      => 'admin',
 		grafana_password  => 'password',
