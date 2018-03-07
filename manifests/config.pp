@@ -110,6 +110,7 @@ class ufprovisioning::config {
 
 	
 	letsencrypt::certonly { $site_name: }
+	letsencrypt::certonly { "stats.${site_name}": }
 
 	nginx::resource::server { $site_name:
 		ensure			=>	present,
@@ -232,7 +233,6 @@ class ufprovisioning::config {
 		ensure => installed,
 	}
 	
-	letsencrypt::certonly { "stats.${site_name}": }
 
 	class { 'grafana': 
 		cfg => {
