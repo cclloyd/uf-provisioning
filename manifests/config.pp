@@ -233,6 +233,40 @@ class ufprovisioning::config {
 	}
 	
 	
+	class { 'grafana': 
+		cfg => {
+			app_mode => 'production',
+			server   => {
+				#http_port     => 8080,
+			},
+			database => {
+				type          => 'sqlite3',
+				host          => '127.0.0.1:3306',
+				name          => 'grafana',
+				user          => 'root',
+				password      => '',
+			},
+				users    => {
+				allow_sign_up => false,
+			},
+		},
+	}
+	
+	grafana_organization { 'NewOrg':
+		grafana_url      => 'http://stats.cclloyd.com:3000',
+		grafana_user     => 'admin',
+		grafana_password => 'password',
+	}
+	
+	grafana_dashboard { 'example_dashboard':
+		grafana_url       => 'http://stats.cclloyd.com:3000',
+		grafana_user      => 'admin',
+		grafana_password  => 'password',
+		grafana_api_path  => '/grafana/api'
+		organization      => 'NewOrg',
+		content           => template('path/to/exported/file.json'),
+	}
+
 
 	
 	

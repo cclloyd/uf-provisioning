@@ -137,6 +137,6 @@ if [ $unameOut == "Darwin" ]; then
 	export GRADLE_USER_HOME
 	lol()   { exec 1> >(lolcat); }
 	unlol() { exec 1> /dev/stdout; }
-
+	
 fi
 
