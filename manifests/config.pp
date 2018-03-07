@@ -232,7 +232,8 @@ class ufprovisioning::config {
 		ensure => installed,
 	}
 	
-	
+	letsencrypt::certonly { "stats.${site_name}": }
+
 	class { 'grafana': 
 		cfg => {
 			app_mode => 'production',
@@ -275,6 +276,9 @@ class ufprovisioning::config {
 		#grafana_api_path  => '/grafana/api',
 		organization      => 'NewOrg',
 		#content           => template('path/to/exported/file.json'),
+		ssl_mode 		=> require,
+		ssl_cert			=>	"/etc/letsencrypt/live/stats.${site_name}/fullchain.pem",
+		cert_key			=>	"/etc/letsencrypt/live/stats.${site_name}/privkey.pem",
 	}
 
 
