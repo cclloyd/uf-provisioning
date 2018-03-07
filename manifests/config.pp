@@ -107,13 +107,17 @@ class ufprovisioning::config {
 	
 	
 	
-
-	service { 'nginx':
-		ensure 	=>	'stopped',
+	exec { 'stopnginx':
+		command		=>	'service nginx stop',
+		user		=>	'root',
+		path		=>	'/usr/bin:/usr/sbin',
+		#provider	=>	'bash',
 	}
 	letsencrypt::certonly { $site_name: }
-	letsencrypt::certonly { "stats.${site_name}": }
-
+	letsencrypt::certonly { "stats.${site_name}": 
+		#require		=>	Service['nginx']
+	}
+	
 	nginx::resource::server { $site_name:
 		ensure			=>	present,
 		server_name 	=>	[$site_name],
