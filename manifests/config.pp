@@ -61,15 +61,15 @@ class ufprovisioning::config {
 	}
 	
 	
-	user { 'deluge':
-		name		=>	'deluge',
-		ensure		=>	'present',
-		#password	=>	'$1$wormhole$eRgixQGXNFCtyjBpeN2o30',
-		system		=>	true,
-		provider	=>	'useradd',
-		#managehome	=>	true,
-		home		=>	'/var/lib/deluge',
-	}
+	#user { 'deluge':
+	#	name		=>	'deluge',
+	#	ensure		=>	'present',
+	#	#password	=>	'$1$wormhole$eRgixQGXNFCtyjBpeN2o30',
+	#	system		=>	true,
+	#	provider	=>	'useradd',
+	#	#managehome	=>	true,
+	#	home		=>	'/var/lib/deluge',
+	#}
 	
 	
 	
