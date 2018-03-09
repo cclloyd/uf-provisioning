@@ -274,9 +274,10 @@ class ufprovisioning::config {
 	}
 	
 	vcsrepo { "/home/git/repo/${site_name}":
-		ensure   => present,
-		provider => git,
-		source   => 'git@bitbucket.org:cclloyd9785/websrd.git',
+		ensure  	=> 	present,
+		provider	=> 	git,
+		source  	=> 	'git@bitbucket.org:cclloyd9785/websrd.git',
+		user		=>	'git',
 	}
 	
 	
