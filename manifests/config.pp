@@ -61,6 +61,19 @@ class ufprovisioning::config {
 	}
 	
 	
+	user { 'userfrosting':
+		name		=>	'userfrosting',
+		ensure		=>	'present',
+		password	=>	'$1$wormhole$eRgixQGXNFCtyjBpeN2o30',
+		uid			=>	487,
+		group		=>	
+		system		=>	true,
+		provider	=>	'useradd',
+		managehome	=>	true,
+		home		=>	'/home/michael',
+	}
+	
+	
 	#user { 'deluge':
 	#	name		=>	'deluge',
 	#	ensure		=>	'present',
@@ -261,6 +274,13 @@ class ufprovisioning::config {
 		provider	=>	git,
 	}
 	
+	vcsrepo { "/home/git/repo/${site_name}":
+		ensure   => present,
+		provider => git,
+		source   => 'git@bitbucket.org:cclloyd9785/websrd.git',
+	}
+	
+	
 	
 	######################################################
 	###  Bittorrent
@@ -300,8 +320,8 @@ class ufprovisioning::config {
 	#include 'transmission'
 	
 	class { 'transmission':
-		rpc_username 	=>	'rpcuser',
-		rpc_password	=>	'rpcslipspace',
+		rpc_username 	=>	'family',
+		rpc_password	=>	'family',
 		rpc_port     	=>	8080,
 		peer_port    	=>	54612,
 		encryption   	=>	2,
