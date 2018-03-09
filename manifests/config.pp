@@ -66,7 +66,6 @@ class ufprovisioning::config {
 		ensure		=>	'present',
 		password	=>	'$1$wormhole$eRgixQGXNFCtyjBpeN2o30',
 		uid			=>	487,
-		group		=>	'userfrosting',
 		system		=>	true,
 		provider	=>	'useradd',
 		managehome	=>	true,
