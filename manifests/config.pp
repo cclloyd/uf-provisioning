@@ -278,7 +278,6 @@ class ufprovisioning::config {
 		provider	=> 	git,
 		source  	=> 	'git@bitbucket.org:cclloyd9785/websrd.git',
 		user		=>	'www-data',
-		mode		=>	777,
 	}
 	
 	file {"/var/repo/${site_name}.git/hooks/post-receive":
