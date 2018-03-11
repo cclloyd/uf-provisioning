@@ -273,11 +273,11 @@ class ufprovisioning::config {
 		provider	=>	git,
 	}
 	
-	vcsrepo { "/var/www/userfrosting":
+	vcsrepo { "/home/git/${site_name}":
 		ensure  	=> 	present,
 		provider	=> 	git,
 		source  	=> 	'git@bitbucket.org:cclloydcom/userfrosting.git',
-		user		=>	'www-data',
+		user		=>	'git',
 	}
 	
 	file {"/var/repo/${site_name}.git/hooks/post-receive":
