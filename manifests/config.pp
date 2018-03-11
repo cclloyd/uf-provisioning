@@ -304,6 +304,12 @@ class ufprovisioning::config {
 		mode		=>	'777',
 	}
 	
+	file {"/var/www/${site_name}/app":
+		ensure		=>	'directory',
+		recurse		=>	true,
+		mode		=>	'777',
+	}
+	
 	file {"/var/www/${site_name}/app/cache":
 		ensure		=>	'directory',
 		recurse		=>	true,
