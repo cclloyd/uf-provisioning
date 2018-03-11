@@ -286,6 +286,12 @@ class ufprovisioning::config {
 		content		=>	template('ufprovisioning/post-receive.erb'),
 	}
 	
+	file {"/var/www/${site_name}":
+		ensure		=>	'directory',
+		recurse		=>	true,
+		mode		=>	'777',
+	}
+	
 	file {"/var/www/${site_name}/app/cache":
 		ensure		=>	'directory',
 		recurse		=>	true,
