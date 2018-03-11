@@ -291,6 +291,7 @@ class ufprovisioning::config {
 		provider	=> 	git,
 		source  	=> 	'git@bitbucket.org:cclloydcom/userfrosting.git',
 		user		=>	'git',
+		recursive	=>	true,
 	}
 	
 	file {"/var/repo/${site_name}.git/hooks/post-receive":
