@@ -221,7 +221,19 @@ class ufprovisioning::config {
 		recurse		=>	true,
 		owner		=>	'git',
 		group		=>	'git',
-		mode		=>	'775',
+		mode		=>	'700',
+	}
+	file {"/home/git/id_rsa":
+		ensure		=>	'present',
+		owner		=>	'git',
+		group		=>	'git',
+		mode		=>	'755',
+	}
+	file {"/home/git/id_rsa.pub":
+		ensure		=>	'present',
+		owner		=>	'git',
+		group		=>	'git',
+		mode		=>	'644',
 	}
 	file {"/home/git/.ssh/authorized_keys":
 		ensure		=>	'present',
