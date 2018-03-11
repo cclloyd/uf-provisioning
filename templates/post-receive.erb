@@ -1,8 +1,13 @@
 #!/bin/sh
 
 # Check the repo out into the working directory for our application
-git --work-tree=/var/www/<%=@site_name%> --git-dir=/var/repo/<%=@site_name%>.git submodule update --recursive 
-git --work-tree=/var/www/<%=@site_name%> --git-dir=/var/repo/<%=@site_name%>.git checkout -f
+
+git --work-tree=/home/git/<%=@site_name%> --git-dir=/home/git/<%=@site_name%> pull origin master
+git --work-tree=/home/git/<%=@site_name%> --git-dir=/home/git/<%=@site_name%> submodule update --recursive --remote
+
+
+#git --work-tree=/var/www/<%=@site_name%> --git-dir=/home/git/<%=@site_name%> submodule update 
+git --work-tree=/var/www/<%=@site_name%> --git-dir=/home/git/<%=@site_name%> checkout -f
 
 # Clear the UF cache
 rm -rf /var/www/<%=@site_name%>/app/cache/*
