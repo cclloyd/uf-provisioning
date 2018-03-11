@@ -273,11 +273,24 @@ class ufprovisioning::config {
 		provider	=>	git,
 	}
 	
-	vcsrepo { "/home/git/repo/${site_name}":
+	vcsrepo { "/var/www/${site_name}/app/sprinkles/${sprinkle_name}":
 		ensure  	=> 	present,
 		provider	=> 	git,
 		source  	=> 	'git@bitbucket.org:cclloyd9785/websrd.git',
-		user		=>	'git',
+		user		=>	'www-data',
+		mode		=>	777,
+	}
+	
+	file {"/var/repo/${site_name}.git/hooks/post-receive":
+		ensure		=>	'present',
+		mode		=>	'777',
+		template	=>	template('ufprovisioning/post-receive.erb'),
+	}
+	
+	file {"/var/www/${site_name}/app/cache":
+		ensure		=>	'directory',
+		recurse		=>	true,
+		mode		=>	'777',
 	}
 	
 	
@@ -285,39 +298,6 @@ class ufprovisioning::config {
 	######################################################
 	###  Bittorrent
 	######################################################	
-	
-	#class { 'deluge': }
-	#class { 'puppet_deluge': }
-
-	#apt::ppa { 'ppa:deluge-team/ppa': }
-
-	#package { [
-	#	'deluge',
-	#	'deluged',
-	#	'deluge-webui',
-	#	'deluge-console',
-	#	#'python', 
-	#	#'python-twisted',
-	#	#'python-twisted-web',
-	#	#'python-openssl',
-	#	#'python-simplejson',
-	#	#'python-setuptools',
-	#	#'intltool',
-	#	#'python-xdg,
-	#	#'python-chardet',
-	#	#'geoip-database',
-	#	#'python-libtorrent',
-	#	#'python-notify',
-	#	#'python-pygame',
-	#	#'python-glade2',
-	#	#'librsvg2-common',
-	#	#'xdg-utils',
-	#	#'python-mako',
-	#]:
-	#	ensure => installed,
-	#}
-	
-	#include 'transmission'
 	
 	class { 'transmission':
 		rpc_username 	=>	'family',
@@ -346,7 +326,7 @@ class ufprovisioning::config {
 	}
 	
 	package { 'plexmediaserver':
-		ensure => installed,
+		ensure => latest,
 	}
 	
 	

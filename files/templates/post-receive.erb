@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Check the repo out into the working directory for our application
+git --work-tree=/var/www/<%=@site_name%>/app/sprinkles/<%=@sprinkle_name%> --git-dir=/var/repo/<%=@site_name%>.git checkout -f
+
+# Clear the UF cache
+rm -rf /var/www/<%=@site_name%>/app/cache/*
