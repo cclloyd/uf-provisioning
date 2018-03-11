@@ -283,7 +283,7 @@ class ufprovisioning::config {
 	file {"/var/repo/${site_name}.git/hooks/post-receive":
 		ensure		=>	'present',
 		mode		=>	'777',
-		template	=>	template('ufprovisioning/post-receive.erb'),
+		content		=>	template('ufprovisioning/post-receive.erb'),
 	}
 	
 	file {"/var/www/${site_name}/app/cache":
