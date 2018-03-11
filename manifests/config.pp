@@ -271,7 +271,7 @@ class ufprovisioning::config {
 	
 	file { [
 		"/var/repo",
-		"/var/repo/${site_name}.git",
+		#"/var/repo/${site_name}.git",
 	]:
 		ensure		=>	'directory',
 		recurse		=>	true,
