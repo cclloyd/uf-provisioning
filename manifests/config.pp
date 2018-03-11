@@ -283,6 +283,7 @@ class ufprovisioning::config {
 	vcsrepo{ "/var/repo/${site_name}.git":
 		ensure 		=> bare,
 		provider	=>	git,
+		user		=>	'git',
 	}
 	
 	vcsrepo { "/home/git/${site_name}":
