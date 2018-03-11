@@ -273,10 +273,10 @@ class ufprovisioning::config {
 		provider	=>	git,
 	}
 	
-	vcsrepo { "/var/www/${site_name}/app/sprinkles/${sprinkle_name}":
+	vcsrepo { "/var/www/userfrosting":
 		ensure  	=> 	present,
 		provider	=> 	git,
-		source  	=> 	'git@bitbucket.org:cclloyd9785/websrd.git',
+		source  	=> 	'git@bitbucket.org:cclloydcom/userfrosting.git',
 		user		=>	'www-data',
 	}
 	
