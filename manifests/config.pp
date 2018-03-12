@@ -222,6 +222,11 @@ class ufprovisioning::config {
 		content		=>	template('ufprovisioning/sprinkles.json.erb'),
 	}
 	
+	nginx::resource::server { "bt.${site_name}":
+		listen_port => 80,
+		proxy       => 'http://cclloyd.com:24011',
+	}
+	
 	
 	######################################################
 	###  Database (Postgre)
@@ -386,7 +391,7 @@ class ufprovisioning::config {
 	class { 'transmission':
 		rpc_username 	=>	'family',
 		rpc_password	=>	'family',
-		rpc_port     	=>	8080,
+		rpc_port     	=>	24011,
 		peer_port    	=>	54612,
 		encryption   	=>	2,
 	}
