@@ -30,7 +30,11 @@ class ufprovisioning::config {
 	include git
 	
 	#class { '::composer': }
-	class { 'nodejs': }
+	class { 'nodejs': 
+		#manage_package_repo       => false,
+		nodejs_dev_package_ensure => 'present',
+		npm_package_ensure        => 'present',
+	}
 
 	
 	class { '::php::globals':
@@ -50,7 +54,6 @@ class ufprovisioning::config {
 			pgsql		=>	{ },
 		},
 	}
-	class { 'nodejs': }
 	class { 'postgresql::server': 
 		postgres_password	=>	"SlipspaceTransmission",
 	}
