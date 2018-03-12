@@ -30,7 +30,8 @@ class ufprovisioning::config {
 	include git
 	
 	#class { '::composer': }
-	
+	class { 'nodejs': }
+
 	
 	class { '::php::globals':
 		php_version		=> '7.0',
