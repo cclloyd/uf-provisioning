@@ -287,13 +287,13 @@ class ufprovisioning::config {
 		group		=>	'git',
 		mode		=>	'700',
 	}
-	file {"/home/git/id_rsa":
+	file {"/home/git/.ssh/id_rsa":
 		ensure		=>	'present',
 		owner		=>	'git',
 		group		=>	'git',
 		mode		=>	'755',
 	}
-	file {"/home/git/id_rsa.pub":
+	file {"/home/git/.ssh/id_rsa.pub":
 		ensure		=>	'present',
 		owner		=>	'git',
 		group		=>	'git',
