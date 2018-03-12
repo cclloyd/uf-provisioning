@@ -12,7 +12,9 @@ class ufprovisioning::config {
 	
 	$webserver_manage	= $::ufprovisioning::webserver_manage
 	$site_name			= $::ufprovisioning::site_name
-	
+	$sprinkle_name		= $ufprovisioning::sprinkle_name,
+
+
 	class { ::letsencrypt: 
 		config => {
 			email		=> 'cclloyd9786@gmail.com',
@@ -198,6 +200,12 @@ class ufprovisioning::config {
 		ensure			=>	present,
 		server		 	=>	$site_name,
 		#www_root 		=>	"/var/www/${site_name}/public/.well_known",
+	}
+	
+	file {"/var/www/${site_name}/app/sprinkles.json":
+		ensure		=>	'present',
+		mode		=>	'775',
+		content		=>	template('ufprovisioning/sprinkles.json.erb'),
 	}
 	
 	
