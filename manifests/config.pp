@@ -42,12 +42,11 @@ class ufprovisioning::config {
 		composer		=>	true,
 		settings		=>	{
 			'PHP/post_max_size'	=> '32M',
-		}
+		},
 		extensions		=>	{
 			gd			=>	{ }
 			mbstring	=>	{ }
-			
-		}
+		},
 	}
 	class { 'nodejs': }
 
