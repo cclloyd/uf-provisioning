@@ -74,6 +74,8 @@ esac
 
 if [ $unameOut == "Linux" ]; then
 
+
+	alias usepsql="sudo -u postgres psql"
 	alias deploy="r10k deploy environment -p production --verbose"
 	alias apply="puppet agent -t --verbose"
 	alias bashrc="nano ~/.bashrc; source ~/.bashrc"
