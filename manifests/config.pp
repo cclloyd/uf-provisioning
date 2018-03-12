@@ -53,6 +53,10 @@ class ufprovisioning::config {
 		postgres_password	=>	"SlipspaceTransmission",
 	}
 	
+	package { 'glances':
+		ensure	=>	latest,
+	}
+	
 	
 	######################################################
 	###  Users
