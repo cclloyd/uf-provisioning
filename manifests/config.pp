@@ -12,7 +12,7 @@ class ufprovisioning::config {
 	
 	$webserver_manage	= $::ufprovisioning::webserver_manage
 	$site_name			= $::ufprovisioning::site_name
-	$sprinkle_name		= $ufprovisioning::sprinkle_name,
+	$sprinkle_name		= $ufprovisioning::sprinkle_name
 
 
 	class { ::letsencrypt: 
