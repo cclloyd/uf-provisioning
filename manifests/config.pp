@@ -46,6 +46,7 @@ class ufprovisioning::config {
 		extensions		=>	{
 			gd			=>	{ },
 			mbstring	=>	{ },
+			pgsql		=>	{ },
 		},
 	}
 	class { 'nodejs': }
