@@ -27,6 +27,23 @@ class ufprovisioning::config {
 	
 	include git
 	
+	#class { '::composer': }
+	
+	
+	class { '::php::globals':
+		php_version		=> '7.0',
+	}->
+	class { '::php':
+		ensure			=> latest,
+		manage_repos	=> true,
+		fpm				=> true,
+		composer		=> true,
+		settings		=> {
+			'PHP/post_max_size'	=> '32M',
+		}
+	}
+	class { 'nodejs': }
+
 	
 	
 	######################################################
