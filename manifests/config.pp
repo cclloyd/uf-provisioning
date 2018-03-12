@@ -49,7 +49,9 @@ class ufprovisioning::config {
 		},
 	}
 	class { 'nodejs': }
-
+	class { 'postgresql::server': 
+		postgres_password	=>	"SlipspaceTransmission",
+	}
 	
 	
 	######################################################
@@ -213,6 +215,16 @@ class ufprovisioning::config {
 	}
 	
 	
+	######################################################
+	###  Database (Postgre)
+	######################################################
+	
+	
+	
+	postgresql::server::db { "${$sprinle_name}_db":
+		user     => 'userfrosting',
+		password => postgresql_password('userfrosting', 'secret'),
+	}
 	
 	
 	
