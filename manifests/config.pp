@@ -223,11 +223,21 @@ class ufprovisioning::config {
 	###  Database (Postgre)
 	######################################################
 	
+	$database_user 		=>	"userfrosting"
 	
+	postgresql::server::role { 'userfrosting':
+		password_hash => postgresql_password($database_user, 'secret'),
+	}
 	
-	postgresql::server::db { "${$sprinle_name}_db":
-		user     => 'userfrosting',
-		password => postgresql_password('userfrosting', 'secret'),
+	postgresql::server::db { "${$sprinle_name}":
+		user     => $database_user,
+		password => postgresql_password($database_user, 'secret'),
+	}
+	
+	postgresql::server::database_grant { 'userfrosting':
+		privilege => 'ALL',
+		db        => $sprinkle_name,
+		role      => 'userfrosting',
 	}
 	
 	
