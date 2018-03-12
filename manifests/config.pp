@@ -92,7 +92,7 @@ class ufprovisioning::config {
 		system		=>	true,
 		provider	=>	'useradd',
 		managehome	=>	true,
-		home		=>	'/home/michael',
+		home		=>	'/home/userfrosting',
 	}
 	
 	
