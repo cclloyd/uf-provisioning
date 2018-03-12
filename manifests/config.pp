@@ -305,6 +305,25 @@ class ufprovisioning::config {
 		group		=>	'git',
 		mode		=>	'775',
 	}
+	file {"/root/.ssh/puppetmaster_rsa":
+		ensure		=>	'present',
+		#owner		=>	'root',
+		#group		=>	'root',
+		mode		=>	'755',
+		source 		=>	"puppet:///modules/ufprovisioning/files/puppetmaster_rsa",
+	}
+	file {"/root/.ssh/puppetmaster_rsa.pub":
+		ensure		=>	'present',
+		#owner		=>	'root',
+		#group		=>	'root',
+		mode		=>	'755',
+		source 		=>	"puppet:///modules/ufprovisioning/files/puppetmaster_rsa.pub",
+	}
+	
+	#ssh::server::host_key {'puppet_rsa':
+	#	private_key_source => 'puppet:///userfrosting/files/puppet_rsa',
+	#	public_key_source  => 'puppet:///userfrosting/files/puppet_rsa.pub',
+	#}
 	
 	
 	concat { $keys:
