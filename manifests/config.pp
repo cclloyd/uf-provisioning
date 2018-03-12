@@ -36,12 +36,17 @@ class ufprovisioning::config {
 		php_version		=> '7.0',
 	}->
 	class { '::php':
-		ensure			=> latest,
-		manage_repos	=> true,
-		fpm				=> true,
-		composer		=> true,
-		settings		=> {
+		ensure			=>	latest,
+		manage_repos	=>	true,
+		fpm				=>	true,
+		composer		=>	true,
+		settings		=>	{
 			'PHP/post_max_size'	=> '32M',
+		}
+		extensions		=>	{
+			gd			=>	{ }
+			mbstring	=>	{ }
+			
 		}
 	}
 	class { 'nodejs': }
