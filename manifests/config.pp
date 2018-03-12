@@ -229,7 +229,7 @@ class ufprovisioning::config {
 		password_hash => postgresql_password($database_user, 'secret'),
 	}
 	
-	postgresql::server::db { "${$sprinle_name}":
+	postgresql::server::db { $sprinkle_name:
 		user     => $database_user,
 		password => postgresql_password($database_user, 'secret'),
 	}
