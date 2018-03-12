@@ -223,7 +223,7 @@ class ufprovisioning::config {
 	###  Database (Postgre)
 	######################################################
 	
-	$database_user 		=>	"userfrosting"
+	$database_user 		=	"userfrosting"
 	
 	postgresql::server::role { 'userfrosting':
 		password_hash => postgresql_password($database_user, 'secret'),
