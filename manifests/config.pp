@@ -33,13 +33,13 @@ class ufprovisioning::config {
 		ensure	=>	latest,
 	}
 	
-	class { 'ufprovisioning::michael' }
-	#class { 'ufprovisioning::bittorrent' }
-	#class { 'ufprovisioning::plex' }
-	class { 'ufprovisioning::git' }
-	#class { 'ufprovisioning::grafana' }
-	class { 'ufprovisioning::cclloyd' }
-	class { 'ufprovisioning::userfrosting' }
+	class { 'ufprovisioning::michael': }
+	#class { 'ufprovisioning::bittorrent': }
+	#class { 'ufprovisioning::plex': }
+	class { 'ufprovisioning::git': }
+	#class { 'ufprovisioning::grafana': }
+	class { 'ufprovisioning::cclloyd': }
+	class { 'ufprovisioning::userfrosting': }
 	
 	
 	######################################################
