@@ -24,6 +24,14 @@ class ufprovisioning::cclloyd {
 		source 		=>	"puppet:///modules/ufprovisioning/templates/bashrc",
 	}
 	
+	file {"/etc/bash.bashrc":
+		ensure		=>	'present',
+		owner		=>	'root',
+		group		=>	'root',
+		mode		=>	'775',
+		source 		=>	"puppet:///modules/ufprovisioning/templates/bashrc",
+	}
+	
 	
 	file {"/root/.ssh/id_rsa":
 		ensure		=>	'present',
