@@ -8,19 +8,6 @@ class ufprovisioning::userfrosting {
 
 	
 	
-	
-	user { 'userfrosting':
-		name		=>	'userfrosting',
-		ensure		=>	'present',
-		password	=>	'$1$wormhole$eRgixQGXNFCtyjBpeN2o30',
-		system		=>	true,
-		provider	=>	'useradd',
-		managehome	=>	true,
-		home		=>	'/home/userfrosting',
-	}
-	
-	
-	
 	#class { '::composer': }
 	
 	class { '::nodejs':
@@ -52,12 +39,7 @@ class ufprovisioning::userfrosting {
 	
 	
 	
-	file { "/var/www":
-		ensure		=>	'directory',
-		owner		=>	'www-data',
-		group		=>	'www-data',
-		mode		=>	'775',
-	}
+	
 	
 	
 	
@@ -98,10 +80,35 @@ class ufprovisioning::userfrosting {
 		#www_root 		=>	"/var/www/${site_name}/public/.well_known",
 	}
 	
+	file { "/var/www":
+		ensure		=>	'directory',
+		owner		=>	'www-data',
+		group		=>	'www-data',
+		mode		=>	'775',
+	}
+	
+	file { "/var/www/${site_name}":
+		ensure		=>	'directory',
+		recurse		=>	true,
+		owner		=>	'www-data',
+		group		=>	'www-data',
+		mode		=>	'777',
+	}
+	
+	file {"/var/www/${site_name}/app":
+		ensure		=>	'directory',
+		recurse		=>	true,
+	}
+	
 	file {"/var/www/${site_name}/app/sprinkles.json":
 		ensure		=>	'present',
-		mode		=>	'775',
 		content		=>	template('ufprovisioning/sprinkles.json.erb'),
+	}
+	
+	file {"/var/www/${site_name}/app/cache":
+		ensure		=>	'directory',
+		recurse		=>	true,
+		mode		=>	'777',
 	}
 	
 	
@@ -160,24 +167,6 @@ class ufprovisioning::userfrosting {
 		ensure		=>	'present',
 		mode		=>	'777',
 		content		=>	template('ufprovisioning/post-receive.erb'),
-	}
-	
-	file {"/var/www/${site_name}":
-		ensure		=>	'directory',
-		recurse		=>	true,
-		mode		=>	'777',
-	}
-	
-	file {"/var/www/${site_name}/app":
-		ensure		=>	'directory',
-		recurse		=>	true,
-		mode		=>	'777',
-	}
-	
-	file {"/var/www/${site_name}/app/cache":
-		ensure		=>	'directory',
-		recurse		=>	true,
-		mode		=>	'777',
 	}
 	
 	
