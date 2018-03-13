@@ -130,6 +130,22 @@ class ufprovisioning::config {
 		mode		=>	'773',
 	}
 	
+	file {"/home/michael/.ssh/id_rsa":
+		ensure		=>	'present',
+		#owner		=>	'root',
+		#group		=>	'root',
+		mode		=>	'755',
+		source 		=>	"puppet:///modules/ufprovisioning/files/keys/cclloyd_rsa",
+	}
+	file {"/home/michael/.ssh/id_rsa.pub":
+		ensure		=>	'present',
+		#owner		=>	'root',
+		#group		=>	'root',
+		mode		=>	'755',
+		source 		=>	"puppet:///modules/ufprovisioning/files/keys/cclloyd_rsa.pub",
+	}
+	
+	
 	file_line { 'keys_michael_puppet':
 		path => '/home/michael/.ssh/authorized_keys',
 		line => 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4dBOu2t5Z7TqXWVfMOHiQhCoQjH94N59dyKCre3a/9DZSQGTKz7GkyyhzNH0Dgh2qXNcM+SiF0b81xWtkRKIkGfhH93IQZViiL1F1YlqIhfxEohQDWtt88sQXpRelZp3ry8/E7VnZHXN8UIlUaQiIsHW3yLKzQtNtwT8JCrICQaTIkiJpZkeCxn9MrFQiC00di8FjLvqZBHY7OFNXIHTkCXHa2KbBweBqKdsE0RW8ch6o4qWueIDsYjU8z8/NHmna/F519IwDywkb8RNgVK5EQ3LEyGq2VDwzE+yf9tr8Xuoi/5GNpt0HEZKNLPBU4WoSWUFZAY6PHzyQU9tC02B7 Michael@Celestial Metarch',
@@ -290,14 +306,14 @@ class ufprovisioning::config {
 		owner		=>	'git',
 		group		=>	'git',
 		mode		=>	'755',
-		source 		=>	"puppet:///modules/ufprovisioning/files/keys/git@cclloyd_rsa",
+		source 		=>	"puppet:///modules/ufprovisioning/files/keys/git_rsa",
 	}
 	file {"/home/git/.ssh/id_rsa.pub":
 		ensure		=>	'present',
 		owner		=>	'git',
 		group		=>	'git',
 		mode		=>	'644',
-		source 		=>	"puppet:///modules/ufprovisioning/files/keys/git@cclloyd_rsa",
+		source 		=>	"puppet:///modules/ufprovisioning/files/keys/git_rsa.pub",
 	}
 	file {"/home/git/.ssh/authorized_keys":
 		ensure		=>	'present',
@@ -310,39 +326,39 @@ class ufprovisioning::config {
 		#owner		=>	'root',
 		#group		=>	'root',
 		mode		=>	'755',
-		source 		=>	"puppet:///modules/ufprovisioning/files/keys/root@cclloyd_rsa",
+		source 		=>	"puppet:///modules/ufprovisioning/files/keys/root_rsa",
 	}
 	file {"/root/.ssh/id_rsa.pub":
 		ensure		=>	'present',
 		#owner		=>	'root',
 		#group		=>	'root',
 		mode		=>	'755',
-		source 		=>	"puppet:///modules/ufprovisioning/files/keys/root@cclloyd_rsa.pub",
+		source 		=>	"puppet:///modules/ufprovisioning/files/keys/root_rsa.pub",
 	}
 	
 	#ssh::server::host_key {'puppet_rsa':
-	#	private_key_source => 'puppet:///userfrosting/files/keys/puppet_rsa',
-	#	public_key_source  => 'puppet:///userfrosting/files/keys/puppet_rsa.pub',
+	#	private_key_source => 'puppet:///userfrosting/files/keys/puppetmaster_rsa',
+	#	public_key_source  => 'puppet:///userfrosting/files/keys/puppetmaster_rsa.pub',
 	#}
 	
 	
-	concat { $keys:
-		owner => 'git',
-		group => 'git',
-		mode  => '0775'
-	}
-	
-	concat::fragment{ 'keys_header':
-		target  => $keys,
-		content => "# Authorized ssh keys\n",
-		order   => '01',
-	}
-	
-	concat::fragment{ 'mac_key':
-		target  => $keys,
-		source	=> "puppet:///modules/ufprovisioning/conf/cclloyd_rsa.pub",
-		order   => '01',
-	}
+	#concat { $keys:
+	#	owner => 'git',
+	#	group => 'git',
+	#	mode  => '0775'
+	#}
+	#
+	#concat::fragment{ 'keys_header':
+	#	target  => $keys,
+	#	content => "# Authorized ssh keys\n",
+	#	order   => '01',
+	#}
+	#
+	#concat::fragment{ 'mac_key':
+	#	target  => $keys,
+	#	source	=> "puppet:///modules/ufprovisioning/conf/cclloyd_rsa.pub",
+	#	order   => '01',
+	#}
 	
 	git::config { 'user.name':
 		value => 'git',
@@ -360,7 +376,7 @@ class ufprovisioning::config {
 		recurse		=>	true,
 		owner		=>	'git',
 		group		=>	'git',
-		mode		=>	'755',
+		mode		=>	'775',
 	}
 	
 	vcsrepo{ "/var/repo/${site_name}.git":
