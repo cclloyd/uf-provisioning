@@ -50,6 +50,23 @@ class ufprovisioning::userfrosting {
 	}
 	
 	
+	
+	
+	file { "/var/www":
+		ensure		=>	'directory',
+		owner		=>	'www-data',
+		group		=>	'www-data',
+		mode		=>	'775',
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	######################################################
 	###  SSL
 	######################################################
