@@ -39,7 +39,7 @@ class ufprovisioning::config {
 	class { 'ufprovisioning::git': }
 	#class { 'ufprovisioning::grafana': }
 	class { 'ufprovisioning::cclloyd': }
-	class { 'ufprovisioning::userfrosting': }
+	#class { 'ufprovisioning::userfrosting': }
 	
 	
 	######################################################
