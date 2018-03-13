@@ -79,5 +79,21 @@ class ufprovisioning::git {
 		mode		=>	'644',
 		source 		=>	"puppet:///modules/ufprovisioning/keys/git_rsa.pub",
 	}
+	
+	
+	
+	
+	
+	
+	file_line { 'keys_git_mac':
+		path => '/home/git/.ssh/authorized_keys',
+		line => 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDFoyTIxhjZNIDocz2Pw4TlezAcwNXuEyo7oEfr+qsY8UWPaXKH8DcVXBTdPh2fcCYfzYJ98Ef8DhdvjMxpvSTw+3xETlC55qbHZdAkfNnZUZRaGmPZysy+jeErQEN2q6Flb6MX2ozEiQKwR4um1XaY1USW8dXO/bgVZ2EIAoE7Zu9wy2nqoHACH6phPVU6Wlg6w2jYQkNwxb+5FUo9mDREwshy7LwR5s8jxnsUJkEhC7ZImdEX9ZexAhfHkee9VWWkepxHtXE8D18uXEn/w8GCXwqlxJ6D5AtBGSAtSKcUIfsS63PKs8aVHoFX1eYX1UOHUlsNZuY6tr7/8Fq/Yr85 Michael@Celestial Metarch'
+	}
+	
+	
+	
+	
+	
+	
 
 }
