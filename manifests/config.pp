@@ -106,18 +106,6 @@ class ufprovisioning::config {
 	}
 	
 	
-	#user { 'deluge':
-	#	name		=>	'deluge',
-	#	ensure		=>	'present',
-	#	#password	=>	'$1$wormhole$eRgixQGXNFCtyjBpeN2o30',
-	#	system		=>	true,
-	#	provider	=>	'useradd',
-	#	#managehome	=>	true,
-	#	home		=>	'/var/lib/deluge',
-	#}
-	
-	
-	
 	######################################################
 	###  SSH Keys
 	######################################################
@@ -184,6 +172,7 @@ class ufprovisioning::config {
 		mode		=>	'775',
 		source 		=>	"puppet:///modules/ufprovisioning/templates/bashrc",
 	}
+	
 	file {"/root/.bashrc":
 		ensure		=>	'present',
 		owner		=>	'root',
@@ -301,14 +290,14 @@ class ufprovisioning::config {
 		owner		=>	'git',
 		group		=>	'git',
 		mode		=>	'755',
-		source 		=>	"puppet:///modules/ufprovisioning/files/git@cclloyd_rsa",
+		source 		=>	"puppet:///modules/ufprovisioning/files/keys/git@cclloyd_rsa",
 	}
 	file {"/home/git/.ssh/id_rsa.pub":
 		ensure		=>	'present',
 		owner		=>	'git',
 		group		=>	'git',
 		mode		=>	'644',
-		source 		=>	"puppet:///modules/ufprovisioning/files/git@cclloyd_rsa",
+		source 		=>	"puppet:///modules/ufprovisioning/files/keys/git@cclloyd_rsa",
 	}
 	file {"/home/git/.ssh/authorized_keys":
 		ensure		=>	'present',
@@ -321,19 +310,19 @@ class ufprovisioning::config {
 		#owner		=>	'root',
 		#group		=>	'root',
 		mode		=>	'755',
-		source 		=>	"puppet:///modules/ufprovisioning/files/root@cclloyd_rsa",
+		source 		=>	"puppet:///modules/ufprovisioning/files/keys/root@cclloyd_rsa",
 	}
 	file {"/root/.ssh/id_rsa.pub":
 		ensure		=>	'present',
 		#owner		=>	'root',
 		#group		=>	'root',
 		mode		=>	'755',
-		source 		=>	"puppet:///modules/ufprovisioning/files/root@cclloyd_rsa.pub",
+		source 		=>	"puppet:///modules/ufprovisioning/files/keys/root@cclloyd_rsa.pub",
 	}
 	
 	#ssh::server::host_key {'puppet_rsa':
-	#	private_key_source => 'puppet:///userfrosting/files/puppet_rsa',
-	#	public_key_source  => 'puppet:///userfrosting/files/puppet_rsa.pub',
+	#	private_key_source => 'puppet:///userfrosting/files/keys/puppet_rsa',
+	#	public_key_source  => 'puppet:///userfrosting/files/keys/puppet_rsa.pub',
 	#}
 	
 	
