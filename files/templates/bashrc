@@ -75,6 +75,10 @@ esac
 if [ $unameOut == "Linux" ]; then
 
 
+	if [ ! "$TERM" = "" ]; then
+		export TERM=xterm-256color
+	fi
+
 	alias usepsql="sudo -u postgres psql"
 	alias deploy="r10k deploy environment -p production --verbose"
 	alias apply="puppet agent -t --verbose"
