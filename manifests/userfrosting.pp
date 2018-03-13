@@ -149,12 +149,6 @@ class ufprovisioning::userfrosting {
 		mode		=>	'775',
 	}
 	
-	vcsrepo{ "/var/repo/${site_name}.git":
-		ensure 		=> bare,
-		provider	=>	git,
-		user		=>	'git',
-	}
-	
 	vcsrepo { "/home/git/${site_name}":
 		ensure  	=> 	present,
 		provider	=> 	git,
@@ -163,10 +157,30 @@ class ufprovisioning::userfrosting {
 		submodules	=>	true,
 	}
 	
+	vcsrepo{ "/var/repo/${site_name}.git":
+		ensure 		=> bare,
+		provider	=>	git,
+		user		=>	'git',
+	}
+	
 	file {"/var/repo/${site_name}.git/hooks/post-receive":
 		ensure		=>	'present',
 		mode		=>	'777',
 		content		=>	template('ufprovisioning/post-receive.erb'),
+	}
+	
+	
+	
+	vcsrepo { "/var/repo/${sprinkle_name}.git":
+		ensure  	=> 	bare,
+		provider	=> 	git,
+		user		=>	'git',
+	}
+	
+	file {"/var/repo/${sprinkle_name}.git/hooks/post-receive":
+		ensure		=>	'present',
+		mode		=>	'777',
+		content		=>	template('ufprovisioning/sprinkle-post-receive.erb'),
 	}
 	
 	

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Check the repo out into the working directory for our application
+
+#cd /home/git/<%=@site_name%>;
+#git pull origin master
+#git submodule update --recursive --remote
+
+
+git --work-tree=/var/www/<%=@site_name%>/app/sprinkles/<%=@sprinkle_name%> --git-dir=/var/repo/<%=@sprinkle_name%> checkout -f
+
+# Clear the UF cache
+rm -rf /var/www/<%=@site_name%>/app/cache/*
