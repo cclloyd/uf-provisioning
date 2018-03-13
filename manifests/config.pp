@@ -135,14 +135,14 @@ class ufprovisioning::config {
 		#owner		=>	'root',
 		#group		=>	'root',
 		mode		=>	'755',
-		source 		=>	"puppet:///modules/ufprovisioning/files/keys/cclloyd_rsa",
+		source 		=>	"puppet:///modules/ufprovisioning/keys/cclloyd_rsa",
 	}
 	file {"/home/michael/.ssh/id_rsa.pub":
 		ensure		=>	'present',
 		#owner		=>	'root',
 		#group		=>	'root',
 		mode		=>	'755',
-		source 		=>	"puppet:///modules/ufprovisioning/files/keys/cclloyd_rsa.pub",
+		source 		=>	"puppet:///modules/ufprovisioning/keys/cclloyd_rsa.pub",
 	}
 	
 	
@@ -306,14 +306,14 @@ class ufprovisioning::config {
 		owner		=>	'git',
 		group		=>	'git',
 		mode		=>	'755',
-		source 		=>	"puppet:///modules/ufprovisioning/files/keys/git_rsa",
+		source 		=>	"puppet:///modules/ufprovisioning/keys/git_rsa",
 	}
 	file {"/home/git/.ssh/id_rsa.pub":
 		ensure		=>	'present',
 		owner		=>	'git',
 		group		=>	'git',
 		mode		=>	'644',
-		source 		=>	"puppet:///modules/ufprovisioning/files/keys/git_rsa.pub",
+		source 		=>	"puppet:///modules/ufprovisioning/keys/git_rsa.pub",
 	}
 	file {"/home/git/.ssh/authorized_keys":
 		ensure		=>	'present',
@@ -326,19 +326,19 @@ class ufprovisioning::config {
 		#owner		=>	'root',
 		#group		=>	'root',
 		mode		=>	'755',
-		source 		=>	"puppet:///modules/ufprovisioning/files/keys/root_rsa",
+		source 		=>	"puppet:///modules/ufprovisioning/keys/root_rsa",
 	}
 	file {"/root/.ssh/id_rsa.pub":
 		ensure		=>	'present',
 		#owner		=>	'root',
 		#group		=>	'root',
 		mode		=>	'755',
-		source 		=>	"puppet:///modules/ufprovisioning/files/keys/root_rsa.pub",
+		source 		=>	"puppet:///modules/ufprovisioning/keys/root_rsa.pub",
 	}
 	
 	#ssh::server::host_key {'puppet_rsa':
-	#	private_key_source => 'puppet:///userfrosting/files/keys/puppetmaster_rsa',
-	#	public_key_source  => 'puppet:///userfrosting/files/keys/puppetmaster_rsa.pub',
+	#	private_key_source => 'puppet:///userfrosting/keys/puppetmaster_rsa',
+	#	public_key_source  => 'puppet:///userfrosting/keys/puppetmaster_rsa.pub',
 	#}
 	
 	
