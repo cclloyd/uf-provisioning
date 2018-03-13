@@ -46,10 +46,9 @@ class ufprovisioning::michael {
 	
 	file {"/home/michael":
 		ensure		=>	'directory',
-		recurse		=>	true,
 		owner		=>	'michael',
 		group		=>	'michael',
-		mode		=>	'775',
+		mode		=>	'770',
 	}
 	file {"/home/michael/.ssh":
 		ensure		=>	'directory',
