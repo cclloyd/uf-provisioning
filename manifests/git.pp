@@ -59,7 +59,7 @@ class ufprovisioning::git {
 		ensure		=>	'present',
 		owner		=>	'git',
 		group		=>	'git',
-		mode		=>	'773',
+		mode		=>	'700',
 	}
 	
 	
