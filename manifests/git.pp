@@ -24,7 +24,7 @@ class ufprovisioning::git {
 		provider	=>	'useradd',
 		managehome	=>	true,
 		home		=>	'/home/git',
-		
+		shell		=>	'/bin/bash',
 	}
 	
 	file { "/var/repo":
@@ -48,7 +48,6 @@ class ufprovisioning::git {
 	
 	file {"/home/git/.ssh":
 		ensure		=>	'directory',
-		recurse		=>	true,
 		owner		=>	'git',
 		group		=>	'git',
 		mode		=>	'700',
