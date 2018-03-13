@@ -94,6 +94,13 @@ class ufprovisioning::git {
 		line => 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCYnyEPyq9itlw6tbw3Ptlj9I55eTKJ1m4MifRh8TEhCU53AQPmkuwH3X4/cdDN9KiNx4w4vJuDmqn9WVmmAVtqVwhNPTHJxxMVPsZXvV9uTT2XAhj8oibsfrFTQK1etFQEWhhnazawc12YXGt+sjixvoP6r6IfPyQdN9JVf2SxsGh/5YWtTHUcHFQ73UHwfbt4PXHnXE8weqeqjTFC5/zfAV0nAutsP6W8YVrTYRB7ZDdt3so6luzP38Lo8ZyQZT08uagteIsVDVRlwKktx5mIF/YX8KGpqnRoIH69b7moGOpoYDa5zorUFEwi+1lte3RfTbMt3xeVDIW/xyc1evRf git@cclloyd.com'
 	}
 	
+	file_line { 'keys_public_git_bitbucket':
+		path => '/home/git/.ssh/authorized_keys',
+		line => '|1|6AUh5lexgO29yYFJk/iih7eMDEc=|LfrK9d980SGfSZJUyatQgi2wAlQ= ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAubiN81eDcafrgMeLzaFPsw2kNvEcqTKl/VqLat/MaB33pZy0y3rJZtnqwR2qOOvbwKZYKiEO1O6VqNEBxKvJJelCq0dTXWT5pbO2gDXC6h6QDXCaHo6pOHGPUy+YBaGQRGuSusMEASYiWunYN0vCAI8QaXnWMXNMdFP3jHAJH0eDsoiGnLPBlBp4TNm6rYI74nMzgz3B9IikW4WVK+dc8KZJZWYjAuORU3jc1c/NPskD2ASinf8v3xnfXeukU0sJ5N6m5E8VLjObPEO+mN2t/FZTMZLiFqPWc/ALSqnMnnhwrNi2rbfg/rd/IpL8Le3pSBne8+seeFVBoGqzHM9yXw=='
+	}
+	
+	
+	
 	
 	
 	
