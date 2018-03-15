@@ -14,13 +14,14 @@ class ufprovisioning::cloud9 {
 		ensure			=> 'present',
 		provider		=> 'groupadd',
 		system			=>	false,
+		gid				=>	1787
 	}
 	
 	user { 'c9':
 		name		=>	'c9',
 		ensure		=>	'present',
 		password	=>	'$1$wormhole$eRgixQGXNFCtyjBpeN2o30',
-		group		=>	'c9',
+		gid			=>	1787,
 		system		=>	false,
 		provider	=>	'useradd',
 		managehome	=>	true,
