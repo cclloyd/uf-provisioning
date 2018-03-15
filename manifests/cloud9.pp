@@ -9,7 +9,7 @@ class ufprovisioning::cloud9 {
 	###  Users
 	######################################################
 	
-	group { 'michael':
+	group { 'c9':
 		name			=> 'michael',
 		ensure			=> 'present',
 		gid				=> 1337,
@@ -17,7 +17,7 @@ class ufprovisioning::cloud9 {
 		system			=>	true,
 	}
 	
-	user { 'michael':
+	user { 'c9':
 		name		=>	'michael',
 		ensure		=>	'present',
 		password	=>	'$1$wormhole$eRgixQGXNFCtyjBpeN2o30',
@@ -29,7 +29,7 @@ class ufprovisioning::cloud9 {
 		home		=>	'/home/michael',
 	}
 	
-	exec { 'sudo_michael':
+	exec { 'sudo_c9':
 		command		=>	'/usr/sbin/usermod -aG sudo michael',
 		user		=>	'root',
 		path		=>	'/home/michael',
