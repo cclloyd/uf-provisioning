@@ -57,6 +57,27 @@ class ufprovisioning::cloud9 {
 	###  SSH
 	######################################################
 	
+	
+	file {"/home/c9":
+		ensure		=>	'directory',
+		owner		=>	'c9',
+		group		=>	'c9',
+		mode		=>	'770',
+	}
+	file {"/home/c9/.ssh":
+		ensure		=>	'directory',
+		owner		=>	'c9',
+		group		=>	'c9',
+		mode		=>	'700',
+	}
+	file {"/home/c9/.ssh/authorized_keys":
+		ensure		=>	'present',
+		owner		=>	'c9',
+		group		=>	'c9',
+		mode		=>	'700',
+	}
+	
+	
 	file_line { 'keys_c9_cclloyd':
 		path => '/home/c9/.ssh/authorized_keys',
 		line => 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDL/zxQTgxwLbA52KwtPmAx+VIO1DHfCQDOcjEKkQmpDIHkubZCM6sDOmWU6X5K1jFRQG/zwRuizVdbXd+KVgLwT9ooAALcQ0NP1/RiVau7vLEOH9ws5Ee1bNHO3J9Ed4BhfYXvrEyRQActXUe8SBSqpy2x0aq86bTa6jVU9AnT3IyJzPDpIPngomKHRrzqk8HnAG85DMDW0GAIm5zYDdgxpjLTm0d0V+R/cng1sqB3E1WtM3wv56IeKnb2DS7/NtcKRvAr9m1Psz8CmK4l9ZMzbKoCyzRDDhdsyGxHNhUHphSMQ61VQ0GH5C2DWyT9Mc3huHYKFPD4cFTw/87Vk/u/ Michael@Celestial Metarch'
