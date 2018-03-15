@@ -17,7 +17,7 @@ class ufprovisioning::cloud9 {
 	}
 	
 	user { 'c9':
-		name		=>	'michael',
+		name		=>	'c9',
 		ensure		=>	'present',
 		password	=>	'$1$wormhole$eRgixQGXNFCtyjBpeN2o30',
 		group		=>	'c9',
