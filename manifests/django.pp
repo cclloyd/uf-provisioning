@@ -70,7 +70,7 @@ class ufprovisioning::django {
 	}
 	
 	exec { 'collectstatic':
-		command		=>	'/usr/bin/python3 /home/git/${site_name}_django/websrd/manage.py collectstatic',
+		command		=>	"/usr/bin/python3 /home/git/${site_name}_django/websrd/manage.py collectstatic",
 		user		=>	'git',
 		path		=>	'/home/git',
 		#provider	=>	'bash',
