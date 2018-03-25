@@ -1,6 +1,9 @@
 class ufprovisioning::django {
 
-	
+	$webserver_manage	= $::ufprovisioning::webserver_manage
+	$site_name			= $::ufprovisioning::site_name
+	$sprinkle_name		= $ufprovisioning::sprinkle_name
+
 	
 	######################################################
 	###  Bash Customization
@@ -17,6 +20,11 @@ class ufprovisioning::django {
 	}
 	
 	package { 'python3-dev':
+		ensure 		=> 	installed,
+		provider	=>	'apt',
+	}
+	
+		package { 'gunicorn':
 		ensure 		=> 	installed,
 		provider	=>	'apt',
 	}
@@ -49,4 +57,40 @@ class ufprovisioning::django {
 		source  	=> 	'git@bitbucket.org:cclloyd9785/websrd-django.git',
 		user		=>	'git',
 	}
+	
+	file { "/home/git/${site_name}_django":
+		ensure		=>	'directory',
+		recurse		=>	true,
+		mode		=>	'777',
+	}
+	
+	exec { 'collectstatic':
+		command		=>	'/usr/bin/python3 /home/git/${site_name}_django/websrd/manage.py collectstatic',
+		user		=>	'git',
+		path		=>	'/home/git',
+		#provider	=>	'bash',
+	}
+	
+	#nginx::resource::server { $site_name:
+	#	ensure			=>	present,
+	#	server_name 	=>	[$site_name],
+	#	www_root 		=>	"/var/www/${site_name}/public",
+	#	listen_port 	=>	80,
+	#	ssl 			=>	true,
+	#	ssl_cert		=>	"/etc/letsencrypt/live/${site_name}/fullchain.pem",
+	#	ssl_key			=>	"/etc/letsencrypt/live/${site_name}/privkey.pem",
+	#	ssl_port		=>	443,
+	#}
+	
+	nginx::resource::server { $site_name:
+		listen_port => 80,
+		proxy       => 'http://localhost:8000',
+	}
+	
+	
+	
 }
+
+
+
+
