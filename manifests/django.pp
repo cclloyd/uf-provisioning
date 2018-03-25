@@ -24,7 +24,12 @@ class ufprovisioning::django {
 		provider	=>	'apt',
 	}
 	
-		package { 'gunicorn':
+	package { 'python3-pip':
+		ensure 		=> 	installed,
+		provider	=>	'apt',
+	}
+	
+	package { 'gunicorn':
 		ensure 		=> 	installed,
 		provider	=>	'apt',
 	}
@@ -36,17 +41,17 @@ class ufprovisioning::django {
 	
 	package { 'setuptools':
 		ensure 		=> 	installed,
-		provider	=>	'pip',
+		provider	=>	'pip3',
 	}
 	
 	package { 'wheel':
 		ensure 		=> 	installed,
-		provider	=>	'pip',
+		provider	=>	'pip3',
 	}
 	
 	package { 'django':
 		ensure 		=> 	installed,
-		provider	=>	'pip',
+		provider	=>	'pip3',
 	}
 	
 	
