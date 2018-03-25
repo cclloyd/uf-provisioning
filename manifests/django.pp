@@ -28,17 +28,17 @@ class ufprovisioning::django {
 	
 	package { 'setuptools':
 		ensure 		=> 	installed,
-		provider	=>	'pip3',
+		provider	=>	'pip',
 	}
 	
 	package { 'wheel':
 		ensure 		=> 	installed,
-		provider	=>	'pip3',
+		provider	=>	'pip',
 	}
 	
 	package { 'django':
 		ensure 		=> 	installed,
-		provider	=>	'pip3',
+		provider	=>	'pip',
 	}
 	
 	
