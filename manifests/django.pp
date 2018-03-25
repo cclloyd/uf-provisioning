@@ -46,7 +46,7 @@ class ufprovisioning::django {
 	vcsrepo { "/home/git/${site_name}_django":
 		ensure  	=> 	present,
 		provider	=> 	git,
-		source  	=> 	'git@bitbucket.org:cclloydcom/websrd-django.git',
+		source  	=> 	'git@bitbucket.org:cclloyd9785/websrd-django.git',
 		user		=>	'git',
 	}
 }
