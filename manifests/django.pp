@@ -63,7 +63,7 @@ class ufprovisioning::django {
 	}
 	
 	exec { 'pull_changes':
-		command		=>	"/usr/bin/git pull origin master --git-dir=/home/git/${site_name}_django",
+		command		=>	"/usr/bin/git --git-dir=/home/git/${site_name}_django/.git pull",
 		user		=>	'git',
 		path		=>	"/home/git",
 		#provider	=>	'bash',
