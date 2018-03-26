@@ -9,7 +9,9 @@ class ufprovisioning::django {
 	###  Bash Customization
 	######################################################
 	
-		
+	
+	class { 'supervisord': }
+	
 	
 	package { 'virtualenv':
 		ensure 		=> 	installed,
@@ -36,10 +38,10 @@ class ufprovisioning::django {
 		provider	=>	'pip3',
 	}
 	
-	package { 'supervisor':
-		ensure 		=> 	installed,
-		provider	=>	'apt',
-	}
+	#package { 'supervisor':
+	#	ensure 		=> 	installed,
+	#	provider	=>	'apt',
+	#}
 	
 	package { 'uwsgi':
 		ensure 		=> 	installed,
