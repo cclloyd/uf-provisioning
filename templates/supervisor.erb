@@ -1,0 +1,7 @@
+[program:websrd]
+command=/usr/bin/gunicorn websrd.wsgi
+directory=/home/git/<%=@site_name%>_django/websrd
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/websrd_django.err.log
+stdout_logfile=/var/log/websrd_django.out.log

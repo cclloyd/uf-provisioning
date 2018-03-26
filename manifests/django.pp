@@ -34,6 +34,11 @@ class ufprovisioning::django {
 		provider	=>	'pip3',
 	}
 	
+	package { 'supervisor':
+		ensure 		=> 	installed,
+		provider	=>	'apt',
+	}
+	
 	package { 'uwsgi':
 		ensure 		=> 	installed,
 		provider	=>	'pip3',
@@ -109,7 +114,10 @@ class ufprovisioning::django {
 	#	proxy		=>	'http://localhost:8000',
 	#}
 	
-	
+	file { "/etc/supervisor/conf.d/${site_name}.conf":
+		ensure		=>	'present',
+		content		=>	template('ufprovisioning/supervisor.erb'),
+	}
 	
 }
 
