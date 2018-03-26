@@ -103,6 +103,10 @@ class ufprovisioning::django {
 	nginx::resource::location{'/static/':
 		server 			=>	$site_name,
 		location_alias	=>	"/home/git/${site_name}_django/websrd/static/",
+		ssl 			=>	true,
+		ssl_cert		=>	"/etc/letsencrypt/live/${site_name}/fullchain.pem",
+		ssl_key			=>	"/etc/letsencrypt/live/${site_name}/privkey.pem",
+		ssl_port		=>	443,	
 	}
 	
 	file { "/etc/supervisor/conf.d/${site_name}.conf":
