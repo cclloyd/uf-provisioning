@@ -98,6 +98,17 @@ class ufprovisioning::django {
 		proxy       => 'http://localhost:8000',
 	}
 	
+	nginx::resource::server { $site_name:
+		listen_port => 80,
+		proxy       => 'http://localhost:8000',
+	}
+	
+	nginx::resource::location{'/static':
+		#proxy => 'http://upstream_app/' ,
+		server => $site_name',
+		root	=>	"/home/git/${site_name}_django/static",
+	}
+	
 	
 	
 }
