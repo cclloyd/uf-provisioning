@@ -105,11 +105,11 @@ class ufprovisioning::django {
 		location_alias	=>	"/home/git/${site_name}_django/",
 	}
 	
-	nginx::resource::location{'/':
-		server 		=>	$site_name,
-		location	=>	"/",
-		proxy		=>	'http://localhost:8000',
-	}
+	#nginx::resource::location{'/':
+	#	server 		=>	$site_name,
+	#	location	=>	"/",
+	#	proxy		=>	'http://localhost:8000',
+	#}
 	
 	
 	
