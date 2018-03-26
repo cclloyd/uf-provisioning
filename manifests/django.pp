@@ -119,6 +119,7 @@ class ufprovisioning::django {
 	
 	supervisor::app { 'websrd':
 		command		=>	"/usr/bin/gunicorn websrd.wsgi --certfile=/etc/letsencrypt/live/${site_name}/fullchain.pem --keyfile=/etc/letsencrypt/live/${site_name}/privkey.pem",
+		directory	=>	"/home/git/${site_name}_django/websrd",
 	}
 }
 
