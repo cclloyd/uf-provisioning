@@ -9,9 +9,7 @@ class ufprovisioning::django {
 	###  Bash Customization
 	######################################################
 	
-	
-	include ::supervisord
-	
+		
 	
 	package { 'virtualenv':
 		ensure 		=> 	installed,
