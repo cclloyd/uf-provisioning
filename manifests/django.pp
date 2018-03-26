@@ -31,12 +31,12 @@ class ufprovisioning::django {
 	
 	package { 'gunicorn':
 		ensure 		=> 	installed,
-		provider	=>	'apt',
+		provider	=>	'pip3',
 	}
 	
 	package { 'uwsgi':
 		ensure 		=> 	installed,
-		provider	=>	'apt',
+		provider	=>	'pip3',
 	}
 	
 	package { 'setuptools':
