@@ -93,7 +93,7 @@ class ufprovisioning::django {
 	
 	nginx::resource::server { $site_name:
 		listen_port 	=> 80,
-		proxy       	=> 'http://localhost:8000',
+		proxy       	=> 'https://localhost:8000',
 		ssl 			=>	true,
 		ssl_cert		=>	"/etc/letsencrypt/live/${site_name}/fullchain.pem",
 		ssl_key			=>	"/etc/letsencrypt/live/${site_name}/privkey.pem",
