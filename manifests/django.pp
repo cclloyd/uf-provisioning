@@ -38,7 +38,7 @@ class ufprovisioning::django {
 	
 	package { 'supervisor':
 		ensure 		=> 	installed,
-		provider	=>	'pip3',
+		provider	=>	'pip',
 	}
 	
 	package { 'uwsgi':
