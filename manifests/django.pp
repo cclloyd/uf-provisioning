@@ -101,7 +101,7 @@ class ufprovisioning::django {
 	nginx::resource::location{'/static':
 		#proxy => 'http://upstream_app/' ,
 		server => $site_name,
-		root	=>	"/home/git/${site_name}_django/static",
+		location	=>	"/home/git/${site_name}_django/static",
 	}
 	
 	
