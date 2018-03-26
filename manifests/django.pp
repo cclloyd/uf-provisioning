@@ -10,7 +10,7 @@ class ufprovisioning::django {
 	######################################################
 	
 	
-	class { 'supervisord': }
+	include ::supervisord
 	
 	
 	package { 'virtualenv':
