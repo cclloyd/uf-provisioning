@@ -102,7 +102,7 @@ class ufprovisioning::django {
 		server 			=>	$site_name,
 		#www_root		=>	"/home/git/${site_name}_django/",
 		#location		=>	"/static",
-		location_alias	=>	"/home/git/${site_name}_django/",
+		location_alias	=>	"/home/git/${site_name}_django/static/",
 	}
 	
 	#nginx::resource::location{'/':
