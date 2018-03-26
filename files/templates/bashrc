@@ -19,6 +19,7 @@ alias upgrade="sudo apt-get upgrade"
 alias renewssl="sudo service nginx stop; certbot renew; sudo service nginx start"
 export HISTFILESIZE=4096
 export HISTSIZE=4096
+export PATH=/opt/puppetlabs/bin:$PATH
 
 if [[ -f ~/.bash_prompt ]]; then
   . ~/.bash_prompt
