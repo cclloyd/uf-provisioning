@@ -94,7 +94,7 @@ class ufprovisioning::django {
 	nginx::resource::server { $site_name:
 		listen_port 	=> 80,
 		proxy       	=> 'https://localhost:8000',
-		rewrite_to_https => true,
+		ssl_redirect	=>	true,
 		ssl 			=>	true,
 		ssl_cert		=>	"/etc/letsencrypt/live/${site_name}/fullchain.pem",
 		ssl_key			=>	"/etc/letsencrypt/live/${site_name}/privkey.pem",
