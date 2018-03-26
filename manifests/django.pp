@@ -55,12 +55,18 @@ class ufprovisioning::django {
 	}
 	
 	
-	
 	vcsrepo { "/home/git/${site_name}_django":
 		ensure  	=> 	present,
 		provider	=> 	git,
 		source  	=> 	'git@bitbucket.org:cclloyd9785/websrd-django.git',
 		user		=>	'git',
+	}
+	
+	exec { 'pull_changes':
+		command		=>	"/usr/bin/git pull origin master",
+		user		=>	'git',
+		path		=>	"/home/git/${site_name}_django",
+		#provider	=>	'bash',
 	}
 	
 	file { "/home/git/${site_name}_django":
