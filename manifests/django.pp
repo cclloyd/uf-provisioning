@@ -103,9 +103,9 @@ class ufprovisioning::django {
 		ssl_port		=>	443,	
 	}
 	
-	nginx::resource::location{'/static/':
+	nginx::resource::location{'/staticfiles/':
 		server 			=>	$site_name,
-		location_alias	=>	"/home/git/${site_name}_django/websrd/static/",
+		location_alias	=>	"/home/git/${site_name}_django/websrd/staticfiles/",
 		ssl 			=>	true,
 	}
 	
