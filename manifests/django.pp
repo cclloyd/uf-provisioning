@@ -9,9 +9,7 @@ class ufprovisioning::django {
 	###  Bash Customization
 	######################################################
 	
-	
-	include supervisor
-	
+		
 	
 	package { 'virtualenv':
 		ensure 		=> 	installed,
@@ -38,10 +36,10 @@ class ufprovisioning::django {
 		provider	=>	'pip3',
 	}
 	
-	#package { 'supervisor':
-	#	ensure 		=> 	installed,
-	#	provider	=>	'apt',
-	#}
+	package { 'supervisor':
+		ensure 		=> 	installed,
+		provider	=>	'pip3',
+	}
 	
 	package { 'uwsgi':
 		ensure 		=> 	installed,
@@ -111,16 +109,11 @@ class ufprovisioning::django {
 		ssl 			=>	true,
 	}
 	
-	#file { "/etc/supervisor/conf.d/${site_name}.conf":
-	#	ensure		=>	'present',
-	#	content		=>	template('ufprovisioning/supervisor.erb'),
-	#}
-	
-	
-	supervisor::app { 'websrd':
-		command		=>	"/usr/bin/gunicorn websrd.wsgi --certfile=/etc/letsencrypt/live/${site_name}/fullchain.pem --keyfile=/etc/letsencrypt/live/${site_name}/privkey.pem",
-		directory	=>	"/home/git/${site_name}_django/websrd",
+	file { "/etc/supervisor/conf.d/${site_name}.conf":
+		ensure		=>	'present',
+		content		=>	template('ufprovisioning/supervisor.erb'),
 	}
+	
 }
 
 
