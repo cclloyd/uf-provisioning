@@ -100,7 +100,7 @@ class ufprovisioning::django {
 	
 	nginx::resource::location{'/static/':
 		server 			=>	$site_name,
-		location_alias	=>	"/home/git/${site_name}_django/static/",
+		location_alias	=>	"/home/git/${site_name}_django/websrd/static/",
 	}
 	
 	#nginx::resource::location{'/':
