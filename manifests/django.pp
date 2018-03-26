@@ -87,32 +87,23 @@ class ufprovisioning::django {
 		#provider	=>	'bash',
 	}
 	
-	#nginx::resource::server { $site_name:
-	#	ensure			=>	present,
-	#	server_name 	=>	[$site_name],
-	#	www_root 		=>	"/var/www/${site_name}/public",
-	#	listen_port 	=>	80,
-	#	ssl 			=>	true,
-	#	ssl_cert		=>	"/etc/letsencrypt/live/${site_name}/fullchain.pem",
-	#	ssl_key			=>	"/etc/letsencrypt/live/${site_name}/privkey.pem",
-	#	ssl_port		=>	443,
-	#}
+	
+	letsencrypt::certonly { $site_name: }
+	
 	
 	nginx::resource::server { $site_name:
-		listen_port => 80,
-		proxy       => 'http://localhost:8000',
+		listen_port 	=> 80,
+		proxy       	=> 'http://localhost:8000',
+		ssl 			=>	true,
+		ssl_cert		=>	"/etc/letsencrypt/live/${site_name}/fullchain.pem",
+		ssl_key			=>	"/etc/letsencrypt/live/${site_name}/privkey.pem",
+		ssl_port		=>	443,	
 	}
 	
 	nginx::resource::location{'/static/':
 		server 			=>	$site_name,
 		location_alias	=>	"/home/git/${site_name}_django/websrd/static/",
 	}
-	
-	#nginx::resource::location{'/':
-	#	server 		=>	$site_name,
-	#	location	=>	"/",
-	#	proxy		=>	'http://localhost:8000',
-	#}
 	
 	file { "/etc/supervisor/conf.d/${site_name}.conf":
 		ensure		=>	'present',

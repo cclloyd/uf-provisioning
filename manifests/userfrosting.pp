@@ -59,7 +59,7 @@ class ufprovisioning::userfrosting {
 	######################################################
 	
 	letsencrypt::certonly { $site_name: }
-	letsencrypt::certonly { "stats.${site_name}":	}
+	#letsencrypt::certonly { "stats.${site_name}":	}
 	
 	
 	
