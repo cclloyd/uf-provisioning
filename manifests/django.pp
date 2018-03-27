@@ -66,13 +66,13 @@ class ufprovisioning::django {
 	
 	
 	
-	file { "/var/repo/${site_name}_django.git":
-		ensure		=>	'directory',
-		recurse		=>	true,
-		owner		=>	'git',
-		group		=>	'git',
-		mode		=>	'775',
-	}
+	#file { "/var/repo/${site_name}_django.git":
+	#	ensure		=>	'directory',
+	#	recurse		=>	true,
+	#	owner		=>	'git',
+	#	group		=>	'git',
+	#	mode		=>	'775',
+	#}
 	
 	vcsrepo{ "/var/repo/${site_name}_django.git":
 		ensure 		=> bare,
