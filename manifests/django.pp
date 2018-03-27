@@ -74,6 +74,12 @@ class ufprovisioning::django {
 	#	mode		=>	'775',
 	#}
 	
+	file { "/var/www/${site_name}_django":
+		ensure		=>	'directory',
+		recurse		=>	true,
+		mode		=>	'777',
+	}
+	
 	vcsrepo{ "/var/repo/${site_name}_django.git":
 		ensure 		=> bare,
 		provider	=>	git,
