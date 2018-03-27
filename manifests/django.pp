@@ -6,10 +6,8 @@ class ufprovisioning::django {
 
 	
 	######################################################
-	###  Bash Customization
+	###  Packages
 	######################################################
-	
-		
 	
 	package { 'virtualenv':
 		ensure 		=> 	installed,
@@ -62,36 +60,67 @@ class ufprovisioning::django {
 	}
 	
 	
-	vcsrepo { "/home/git/${site_name}_django":
-		ensure  	=> 	present,
-		provider	=> 	git,
-		source  	=> 	'git@bitbucket.org:cclloyd9785/websrd-django.git',
-		user		=>	'git',
-	}
+	######################################################
+	###  Git Deployment
+	######################################################
 	
-	exec { 'pull_changes':
-		command		=>	"/usr/bin/git --git-dir=/home/git/${site_name}_django/.git pull",
-		user		=>	'git',
-		path		=>	"/home/git",
-		#provider	=>	'bash',
-	}
 	
-	file { "/home/git/${site_name}_django":
+	
+	file { "/var/repo/${site_name}_django.git":
 		ensure		=>	'directory',
 		recurse		=>	true,
-		mode		=>	'777',
+		owner		=>	'git',
+		group		=>	'git',
+		mode		=>	'775',
 	}
 	
-	exec { 'collectstatic':
-		command		=>	"/usr/bin/python3 /home/git/${site_name}_django/websrd/manage.py collectstatic --noinput",
+	vcsrepo{ "/var/repo/${site_name}_django.git":
+		ensure 		=> bare,
+		provider	=>	git,
 		user		=>	'git',
-		path		=>	'/home/git',
-		#provider	=>	'bash',
 	}
 	
+	file {"/var/repo/${site_name}_django.git/hooks/post-receive":
+		ensure		=>	'present',
+		mode		=>	'777',
+		content		=>	template('ufprovisioning/post-receive-django.erb'),
+	}
+	
+	
+	#vcsrepo { "/home/git/${site_name}_django":
+	#	ensure  	=> 	present,
+	#	provider	=> 	git,
+	#	source  	=> 	'git@bitbucket.org:cclloyd9785/websrd-django.git',
+	#	user		=>	'git',
+	#}
+	#
+	#exec { 'pull_changes':
+	#	command		=>	"/usr/bin/git --git-dir=/home/git/${site_name}_django/.git pull",
+	#	user		=>	'git',
+	#	path		=>	"/home/git",
+	#	#provider	=>	'bash',
+	#}
+	
+	#file { "/home/git/${site_name}_django":
+	#	ensure		=>	'directory',
+	#	recurse		=>	true,
+	#	mode		=>	'777',
+	#}
+	
+	#exec { 'collectstatic':
+	#	command		=>	"/usr/bin/python3 /home/git/${site_name}_django/websrd/manage.py collectstatic --noinput",
+	#	user		=>	'git',
+	#	path		=>	'/home/git',
+	#	#provider	=>	'bash',
+	#}
+	
+	
+	
+	######################################################
+	###  Web server
+	######################################################
 	
 	letsencrypt::certonly { $site_name: }
-	
 	
 	nginx::resource::server { $site_name:
 		listen_port 	=> 80,
