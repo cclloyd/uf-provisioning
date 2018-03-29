@@ -162,21 +162,19 @@ class ufprovisioning::django {
 	class { 'postgresql::server': 
 		postgres_password	=>	"SlipspaceTransmission",
 	}
-	
-	$database_user 		=	"websrd"
-	
+		
 	postgresql::server::role { 'websrd':
-		password_hash	=> postgresql_password($database_user, 'secret'),
+		password_hash	=> postgresql_password('websrd', 'secret'),
 	}
 	
 	postgresql::server::db { 'websrd':
-		user		=> $database_user,
-		password	=> postgresql_password($database_user, 'secret'),
+		user		=> 'websrd',
+		password	=> postgresql_password('websrd', 'secret'),
 	}
 	
 	postgresql::server::database_grant { 'websrd':
 		privilege	=> 'ALL',
-		db			=> $sprinkle_name,
+		db			=> 'websrd',
 		role		=> 'websrd',
 	}
 	
