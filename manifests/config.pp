@@ -18,9 +18,10 @@ class ufprovisioning::config {
 	class { ::letsencrypt: 
 		config => {
 			email		=>	'cclloyd9786@gmail.com',
-			server 		=>	'https://acme-staging.api.letsencrypt.org/directory',
+			#server 		=>	'https://acme-staging.api.letsencrypt.org/directory',
 		}
 	}
+	
 	#class { 'apt':
 	#	update => {
 	#		frequency => 'daily',
