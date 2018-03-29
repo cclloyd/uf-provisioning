@@ -6,5 +6,5 @@
 
 git --work-tree=/var/www/<%=@site_name%>_django --git-dir=/var/repo/<%=@site_name%>_django.git checkout -f
 
-python3 /var/www/<%=@site_name%>_django/websrd/manage.py collectstatic --noinput
+python3 /var/www/<%=@site_name%>_django/websrd/manage.py collectstatic --noinput --link
 #python3 /var/www/${site_name}_django/websrd/manage.py migrate

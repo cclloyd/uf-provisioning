@@ -140,7 +140,7 @@ class ufprovisioning::django {
 	
 	nginx::resource::location{'/staticfiles/':
 		server 			=>	$site_name,
-		location_alias	=>	"/home/git/${site_name}_django/websrd/staticfiles/",
+		location_alias	=>	"/var/www/${site_name}_django/websrd/staticfiles/",
 		ssl 			=>	true,
 	}
 	
