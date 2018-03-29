@@ -149,6 +149,32 @@ class ufprovisioning::django {
 		content		=>	template('ufprovisioning/supervisor.erb'),
 	}
 	
+	######################################################
+	###  Database server
+	######################################################
+	
+	
+	class { 'postgresql::server': 
+		postgres_password	=>	"SlipspaceTransmission",
+	}
+	
+	$database_user 		=	"userfrosting"
+	
+	postgresql::server::role { 'websrd':
+		password_hash	=> postgresql_password($database_user, 'secret'),
+	}
+	
+	postgresql::server::db { $sprinkle_name:
+		user		=> $database_user,
+		password	=> postgresql_password($database_user, 'secret'),
+	}
+	
+	postgresql::server::database_grant { 'websrd':
+		privilege	=> 'ALL',
+		db			=> $sprinkle_name,
+		role		=> 'websrd',
+	}
+	
 }
 
 
