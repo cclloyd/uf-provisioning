@@ -163,19 +163,19 @@ class ufprovisioning::django {
 		postgres_password	=>	"SlipspaceTransmission",
 	}
 		
-	postgresql::server::role { 'websrd':
-		password_hash	=> postgresql_password('websrd', 'secret'),
+	postgresql::server::role { 'django':
+		password_hash	=> postgresql_password('django', 'secret'),
 	}
 	
 	postgresql::server::db { 'websrd':
-		user		=> 'websrd',
-		password	=> postgresql_password('websrd', 'secret'),
+		user		=> 'django',
+		password	=> postgresql_password('django', 'secret'),
 	}
 	
 	postgresql::server::database_grant { 'websrd':
 		privilege	=> 'ALL',
 		db			=> 'websrd',
-		role		=> 'websrd',
+		role		=> 'django',
 	}
 	
 }
