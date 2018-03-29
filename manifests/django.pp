@@ -54,6 +54,11 @@ class ufprovisioning::django {
 		provider	=>	'pip3',
 	}
 	
+	package { 'psycopg2':
+		ensure 		=> 	installed,
+		provider	=>	'pip3',
+	}
+	
 	package { 'django':
 		ensure 		=> 	installed,
 		provider	=>	'pip3',
@@ -158,13 +163,13 @@ class ufprovisioning::django {
 		postgres_password	=>	"SlipspaceTransmission",
 	}
 	
-	$database_user 		=	"userfrosting"
+	$database_user 		=	"websrd"
 	
 	postgresql::server::role { 'websrd':
 		password_hash	=> postgresql_password($database_user, 'secret'),
 	}
 	
-	postgresql::server::db { $sprinkle_name:
+	postgresql::server::db { 'websrd':
 		user		=> $database_user,
 		password	=> postgresql_password($database_user, 'secret'),
 	}
