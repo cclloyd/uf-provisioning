@@ -70,6 +70,12 @@ class ufprovisioning::django {
 	######################################################
 	
 	
+	file { "/var/www/":
+		ensure		=>	'directory',
+		user		=>	'www-data',
+		group		=>	'www-data',
+	}
+	
 	
 	#file { "/var/repo/${site_name}_django.git":
 	#	ensure		=>	'directory',
