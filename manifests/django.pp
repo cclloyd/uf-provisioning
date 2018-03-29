@@ -72,7 +72,7 @@ class ufprovisioning::django {
 	
 	file { "/var/www/":
 		ensure		=>	'directory',
-		user		=>	'www-data',
+		owner		=>	'www-data',
 		group		=>	'www-data',
 	}
 	
