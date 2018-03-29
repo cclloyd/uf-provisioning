@@ -54,7 +54,7 @@ class ufprovisioning::django {
 		provider	=>	'pip3',
 	}
 	
-	package { 'psycopg2':
+	package { 'psycopg2-binary':
 		ensure 		=> 	installed,
 		provider	=>	'pip3',
 	}

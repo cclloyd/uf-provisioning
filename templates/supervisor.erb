@@ -1,5 +1,5 @@
 [program:websrd]
-command=gunicorn websrd.wsgi --certfile=/etc/letsencrypt/live/<%=@site_name%>/fullchain.pem --keyfile=/etc/letsencrypt/live/<%=@site_name%>/privkey.pem
+command=gunicorn websrd.wsgi --bind 0.0.0.0 --certfile=/etc/letsencrypt/live/<%=@site_name%>/fullchain.pem --keyfile=/etc/letsencrypt/live/<%=@site_name%>/privkey.pem
 directory=/var/www/<%=@site_name%>_django/websrd
 autostart=true
 autorestart=true
