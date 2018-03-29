@@ -84,6 +84,9 @@ if [ $unameOut == "Linux" ]; then
 	alias deploy="r10k deploy environment -p production --verbose"
 	alias apply="puppet agent -t --verbose"
 	alias bashrc="nano ~/.bashrc; source ~/.bashrc"
+	alias supstart="supervisorctl start"
+	alias supstop="supervisorctl stop"
+	alias suporestart="supervisorctl restart"
 
 	export PS1="\[\033[38;5;81m\]\u\[$(tput sgr0)\]\[\033[38;5;69m\]@\h\[$(tput sgr0)\]:\[$(tput sgr0)\]\[\033[38;5;40m\][\w]\[$(tput sgr0)\]\[\033[38;5;15m\]\[$(tput sgr0)\]: "
 	#export PS1='\[\033[1;36m\]\u\[\033[1;31m\]@\[\033[1;32m\]\h:\[\033[1;35m\]\w\[\033[1;31m\]\$\[\033[0m\] '
