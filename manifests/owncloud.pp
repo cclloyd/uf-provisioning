@@ -31,7 +31,7 @@ class ufprovisioning::owncloud {
 	
 	letsencrypt::certonly { "cloud.${site_name}": }
 	
-	nginx::resource::server { $site_name:
+	nginx::resource::server { "cloud.${site_name}":
 		listen_port 	=> 80,
 		www_root 		=>	"/var/www/owncloud",
 		ssl_redirect	=>	true,
