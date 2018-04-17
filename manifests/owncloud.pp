@@ -61,19 +61,19 @@ class ufprovisioning::owncloud {
 	
 	
 		
-	postgresql::server::role { 'owncloud':
-		password_hash	=> postgresql_password('owncloud', 'secret'),
+	postgresql::server::role { 'nextcloud':
+		password_hash	=> postgresql_password('nextcloud', 'secret'),
 	}
 	
-	postgresql::server::db { 'owncloud':
-		user		=> 'owncloud',
-		password	=> postgresql_password('owncloud', 'secret'),
+	postgresql::server::db { 'nextcloud':
+		user		=> 'nextcloud',
+		password	=> postgresql_password('nextcloud', 'secret'),
 	}
 	
-	postgresql::server::database_grant { 'owncloud':
+	postgresql::server::database_grant { 'nextcloud':
 		privilege	=> 'ALL',
-		db			=> 'owncloud',
-		role		=> 'owncloud',
+		db			=> 'nextcloud',
+		role		=> 'nextcloud',
 	}
 	
 }
