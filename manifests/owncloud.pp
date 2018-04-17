@@ -41,6 +41,19 @@ class ufprovisioning::owncloud {
 		ssl_port		=>	443,	
 	}
 	
+	nginx::resource::location { "~ \.php$":
+		server		 	=>	"cloud.${site_name}",
+		www_root 		=>	"/var/www/cloud.${site_name}",
+		index_files     => ['index.php', 'index.html'],
+		fastcgi         => "127.0.0.1:9000",
+		#fastcgi_script  => undef,
+		location_cfg_append => {
+			fastcgi_connect_timeout => '3m',
+			fastcgi_read_timeout    => '3m',
+			fastcgi_send_timeout    => '3m'
+		}
+	}
+	
 	
 	######################################################
 	###  Database server
