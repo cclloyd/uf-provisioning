@@ -1,0 +1,43 @@
+#! /usr/bin/env bash
+
+RESTORE=$(echo -en '\033[0m')
+RESET=$(echo -en '\033[0m')
+RED=$(echo -en '\033[00;31m')
+GREEN=$(echo -en '\033[00;32m')
+YELLOW=$(echo -en '\033[00;33m')
+BLUE=$(echo -en '\033[00;34m')
+MAGENTA=$(echo -en '\033[00;35m')
+PURPLE=$(echo -en '\033[00;35m')
+CYAN=$(echo -en '\033[00;36m')
+LIGHTGRAY=$(echo -en '\033[00;37m')
+LRED=$(echo -en '\033[01;31m')
+LGREEN=$(echo -en '\033[01;32m')
+LYELLOW=$(echo -en '\033[01;33m')
+LBLUE=$(echo -en '\033[01;34m')
+LMAGENTA=$(echo -en '\033[01;35m')
+LPURPLE=$(echo -en '\033[01;35m')
+LCYAN=$(echo -en '\033[01;36m')
+WHITE=$(echo -en '\033[01;37m')
+C1=$(echo -en '\033[1;38;5;003m')
+
+# Basic info
+HOSTNAME=`uname -n`
+ROOT=`df -Ph | grep xvda1 | awk '{print $4}' | tr -d '\n'`
+
+# System load
+MEMORY1=`free -t -m | grep Total | awk '{print $3" MB";}'`
+MEMORY2=`free -t -m | grep "Mem" | awk '{print $2" MB";}'`
+LOAD1=`cat /proc/loadavg | awk {'print $1'}`
+LOAD5=`cat /proc/loadavg | awk {'print $2'}`
+LOAD15=`cat /proc/loadavg | awk {'print $3'}`
+
+echo "
+$C1===============================================$RESET
+$C1=$RESET - Hostname............: $HOSTNAME
+$C1=$RESET - Disk Space..........: $ROOT remaining
+$C1===============================================$RESET
+$C1=$RESET - CPU usage...........: $LOAD1, $LOAD5, $LOAD15 (1, 5, 15 min)
+$C1=$RESET - Memory used.........: $MEMORY1 / $MEMORY2
+$C1===============================================$RESET
+" | sudo tee /etc/motd
+# - Swap in use.........: `free -m | tail -n 1 | awk '{print $3}'` MB
