@@ -9,11 +9,11 @@ class ufprovisioning::reactstack {
 	nginx::resource::server { "react.${site_name}":
 		listen_port 	=> 80,
 		www_root 		=>	"/var/www/opensrd_fullstack/frontend/build",
-		ssl_redirect	=>	true,
-		ssl 			=>	true,
-		ssl_cert		=>	"/etc/letsencrypt/live/react.${site_name}/fullchain.pem",
-		ssl_key			=>	"/etc/letsencrypt/live/react.${site_name}/privkey.pem",
-		ssl_port		=>	443,	
+		#ssl_redirect	=>	false,
+		#ssl 			=>	true,
+		#ssl_cert		=>	"/etc/letsencrypt/live/react.${site_name}/fullchain.pem",
+		#ssl_key			=>	"/etc/letsencrypt/live/react.${site_name}/privkey.pem",
+		#ssl_port		=>	443,	
 	}
 	
 }
