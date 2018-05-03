@@ -32,6 +32,93 @@ class ufprovisioning::reactstack {
 	}
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	######################################################
+	###  Packages
+	######################################################
+	
+	package { 'virtualenv':
+		ensure 		=> 	installed,
+		provider	=>	'apt',
+	}	
+	
+	package { 'virtualenvwrapper':
+		ensure 		=> 	installed,
+		provider	=>	'apt',
+	}
+	
+	package { 'python3-dev':
+		ensure 		=> 	installed,
+		provider	=>	'apt',
+	}
+	
+	package { 'python3-pip':
+		ensure 		=> 	installed,
+		provider	=>	'apt',
+	}
+	
+	package { 'gunicorn':
+		ensure 		=> 	installed,
+		provider	=>	'pip3',
+	}
+	
+	package { 'supervisor':
+		ensure 		=> 	installed,
+		provider	=>	'apt',
+	}
+	
+	package { 'uwsgi':
+		ensure 		=> 	installed,
+		provider	=>	'pip3',
+	}
+	
+	package { 'setuptools':
+		ensure 		=> 	installed,
+		provider	=>	'pip3',
+	}
+	
+	package { 'wheel':
+		ensure 		=> 	installed,
+		provider	=>	'pip3',
+	}
+	
+	package { 'psycopg2-binary':
+		ensure 		=> 	installed,
+		provider	=>	'pip3',
+	}
+	
+	package { 'django':
+		ensure 		=> 	installed,
+		provider	=>	'pip3',
+	}
+	
+	
+	
+	
+	
+	
+	
+	file {"/var/www/opensrd-api":
+		ensure		=>	'directory',
+		owner		=>	'www-data',
+		group		=>	'www-data',
+		mode		=>	'755',
+	}
+	
+	file { "/etc/supervisor/conf.d/${site_name}.conf":
+		ensure		=>	'present',
+		content		=>	template('ufprovisioning/supervisor.erb'),
+	}
+	
 }
 
 
