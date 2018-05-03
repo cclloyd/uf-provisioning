@@ -30,7 +30,13 @@ class ufprovisioning::reactstack {
 		ssl_port		=>	443,	
 	}
 	
-	nginx::resource::location{'/api(.*)':
+	nginx::resource::location{'/staticfiles/':
+		server 			=>	$site_name,
+		location_alias	=>	"/var/www/opensrd-api/staticfiles/",
+		ssl 			=>	true,
+	}
+	
+	nginx::resource::location{'/api':
 		server 				=>	$site_name,
 		proxy				=>	"https://${site_name}:8000",
 		#rewrite_rules		=>	['/api/(.*)'],
