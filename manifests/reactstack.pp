@@ -119,6 +119,25 @@ class ufprovisioning::reactstack {
 		content		=>	template('ufprovisioning/supervisor.erb'),
 	}
 	
+	class { 'postgresql::server': 
+		postgres_password	=>	"SlipspaceTransmission",
+	}
+		
+	postgresql::server::role { 'django':
+		password_hash	=> postgresql_password('django', 'secret'),
+	}
+	
+	postgresql::server::db { 'opensrd':
+		user		=> 'django',
+		password	=> postgresql_password('django', 'secret'),
+	}
+	
+	postgresql::server::database_grant { 'opensrd':
+		privilege	=> 'ALL',
+		db			=> 'opensrd',
+		role		=> 'django',
+	}
+	
 }
 
 
