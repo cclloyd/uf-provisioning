@@ -4,17 +4,18 @@ class ufprovisioning::reactstack {
 	$site_name			= $::ufprovisioning::site_name
 	$sprinkle_name		= $ufprovisioning::sprinkle_name
 
-	letsencrypt::certonly { "react.${site_name}": }
+	letsencrypt::certonly { "${site_name}": }
 	
-	nginx::resource::server { "react.${site_name}":
+	nginx::resource::server { "${site_name}":
 		listen_port 	=> 80,
-		www_root 		=>	"/var/www/opensrd_fullstack/frontend/build",
+		www_root 		=>	"/var/www/opensrd-frontend",
 		#ssl_redirect	=>	false,
 		#ssl 			=>	true,
-		#ssl_cert		=>	"/etc/letsencrypt/live/react.${site_name}/fullchain.pem",
-		#ssl_key			=>	"/etc/letsencrypt/live/react.${site_name}/privkey.pem",
+		#ssl_cert		=>	"/etc/letsencrypt/live/${site_name}/fullchain.pem",
+		#ssl_key			=>	"/etc/letsencrypt/live/${site_name}/privkey.pem",
 		#ssl_port		=>	443,	
 	}
+	
 	
 }
 

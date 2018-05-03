@@ -140,6 +140,7 @@ if [ $unameOut == "Darwin" ]; then
 	export CLICOLOR=1
 	export LSCOLORS=GxFxCxDxBxegedabagaced
 	#export LSCOLORS=$LS_COLORS
+	alias fixcopy="killall pbcopy"
 	
 	alias bashrc="nano ~/.bash_profile; source ~/.bash_profile"
 	
