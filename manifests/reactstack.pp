@@ -33,7 +33,7 @@ class ufprovisioning::reactstack {
 	
 	nginx::resource::location{'/api':
 		server 			=>	$site_name,
-		proxy_pass		=>	"https://${site_name}:8000"
+		proxy_pass		=>	"https://${site_name}:8000",
 		ssl 			=>	true,
 	}
 	
