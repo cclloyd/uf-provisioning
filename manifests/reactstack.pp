@@ -6,6 +6,21 @@ class ufprovisioning::reactstack {
 
 	letsencrypt::certonly { "${site_name}": }
 	
+	file {"/var/www":
+		ensure		=>	'directory',
+		owner		=>	'www-data',
+		group		=>	'www-data',
+		mode		=>	'755',
+		source 		=>	"puppet:///modules/ufprovisioning/templates/bashrc",
+	}
+	
+	file {"/var/www/opensrd-frontend":
+		ensure		=>	'directory',
+		owner		=>	'www-data',
+		group		=>	'www-data',
+		mode		=>	'755',
+	}
+	
 	nginx::resource::server { "${site_name}":
 		listen_port 	=> 80,
 		www_root 		=>	"/var/www/opensrd-frontend",
