@@ -11,7 +11,6 @@ class ufprovisioning::reactstack {
 		owner		=>	'www-data',
 		group		=>	'www-data',
 		mode		=>	'755',
-		source 		=>	"puppet:///modules/ufprovisioning/templates/bashrc",
 	}
 	
 	file {"/var/www/opensrd-frontend":
@@ -34,7 +33,7 @@ class ufprovisioning::reactstack {
 	nginx::resource::location{'/api(.*)':
 		server 				=>	$site_name,
 		proxy				=>	"https://${site_name}:8000",
-		rewrite_rules		=>	['/api/(.*)'],
+		#rewrite_rules		=>	['/api/(.*)'],
 		ssl 				=>	true,
 		#location_cfg_append	=>	{
         #	'rewrite' => '/api(.*)$ /api/$1 last;'
