@@ -10,6 +10,13 @@ alias sshconfig="nano ~/.ssh/config"
 
 alias dc="docker-compose"
 
+#alias gif="ffmpeg -y -i shorthalo.mp4 -vf fps=23.98,scale=1280:-1:flags=lanczos,palettegen palette.png\nffmpeg -y -i shorthalo.mp4 -i palette.png -filter_complex "fps=23.98,scale=1280:-1:flags=lanczos[x];[x][1:v]paletteuse" halo.gif
+
+makegif() { 
+    ffmpeg -y -i $1 -vf fps=23.98,scale=$2:-1:flags=lanczos,palettegen palette.png;
+    ffmpeg -y -i $1 -i palette.png -filter_complex "fps=23.98,scale=$2:-1:flags=lanczos[x];[x][1:v]paletteuse" $3
+}
+
 alias ls="ls --color=auto"
 alias la="ls -a"
 alias ll="ls -lhA"
@@ -23,6 +30,11 @@ alias renewssl="sudo service nginx stop; certbot renew; sudo service nginx start
 export HISTFILESIZE=4096
 export HISTSIZE=4096
 export PATH=/opt/puppetlabs/bin:$PATH
+
+alias dockerall="docker ps -aq"
+alias dockerstopall="docker stop $(docker ps -aq)"
+alias dockerrmall="docker rm $(docker ps -aq)"
+
 
 if [[ -f ~/.bash_prompt ]]; then
   . ~/.bash_prompt
